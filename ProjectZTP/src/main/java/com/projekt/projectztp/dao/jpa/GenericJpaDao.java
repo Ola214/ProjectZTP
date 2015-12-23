@@ -16,7 +16,7 @@ import org.springframework.stereotype.Repository;
  *
  * @author m
  */
-@Repository
+
 public class GenericJpaDao<T, K> implements GenericDao<T, K> {
 
     private final Class<T> type;

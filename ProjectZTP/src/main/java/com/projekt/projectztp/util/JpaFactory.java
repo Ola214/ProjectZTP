@@ -19,7 +19,7 @@ public class JpaFactory {
     private EntityManagerFactory emf;
 
     private JpaFactory() {
-        emf = Persistence.createEntityManagerFactory("PU");
+        emf = Persistence.createEntityManagerFactory("com.projekt_ProjectZTP_war_1.0PU");
     }
 
     public static JpaFactory getInstanance() {
