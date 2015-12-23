@@ -7,11 +7,13 @@ package com.projekt.projectztp.dao.jpa;
 
 import com.projekt.projectztp.dao.CathegoryDao;
 import com.projekt.projectztp.entity.Cathegory;
+import org.springframework.stereotype.Repository;
 
 /**
  *
  * @author Olaa
  */
+@Repository
 public class JpaCathegoryDao extends GenericJpaDao<Cathegory, Short> implements CathegoryDao {
     
 }

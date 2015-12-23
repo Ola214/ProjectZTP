@@ -7,11 +7,13 @@ package com.projekt.projectztp.dao.jpa;
 
 import com.projekt.projectztp.dao.PurchaseProductDao;
 import com.projekt.projectztp.entity.PurchaseProduct;
+import org.springframework.stereotype.Repository;
 
 /**
  *
  * @author Olaa
  */
+@Repository
 public class JpaPurchaseProductDao extends GenericJpaDao<PurchaseProduct, Long> implements PurchaseProductDao{
     
 }

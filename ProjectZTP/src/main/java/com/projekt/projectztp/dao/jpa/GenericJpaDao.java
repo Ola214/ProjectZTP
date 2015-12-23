@@ -10,11 +10,13 @@ import java.lang.reflect.Type;
 import javax.persistence.EntityManager;
 import com.projekt.projectztp.dao.GenericDao;
 import com.projekt.projectztp.util.JpaFactory;
+import org.springframework.stereotype.Repository;
 
 /**
  *
  * @author m
  */
+@Repository
 public class GenericJpaDao<T, K> implements GenericDao<T, K> {
 
     private final Class<T> type;

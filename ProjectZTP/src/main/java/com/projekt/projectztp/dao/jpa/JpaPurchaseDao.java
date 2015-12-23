@@ -10,11 +10,13 @@ import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import com.projekt.projectztp.dao.PurchaseDao;
 import com.projekt.projectztp.entity.Purchase;
+import org.springframework.stereotype.Repository;
 
 /**
  *
  * @author user
  */
+@Repository
 public class JpaPurchaseDao  extends GenericJpaDao<Purchase, Long> implements PurchaseDao {
     
     

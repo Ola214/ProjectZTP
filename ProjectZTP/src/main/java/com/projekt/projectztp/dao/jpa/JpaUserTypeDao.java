@@ -7,11 +7,13 @@ package com.projekt.projectztp.dao.jpa;
 
 import com.projekt.projectztp.dao.UserTypeDao;
 import com.projekt.projectztp.entity.UserType;
+import org.springframework.stereotype.Repository;
 
 /**
  *
  * @author Olaa
  */
+@Repository
 public class JpaUserTypeDao extends GenericJpaDao<UserType, Short> implements UserTypeDao{
     
 }

@@ -9,11 +9,14 @@ import com.projekt.projectztp.dao.CathegoryDao;
 import com.projekt.projectztp.dao.UserStatusDao;
 import com.projekt.projectztp.entity.Cathegory;
 import com.projekt.projectztp.entity.UserStatus;
+import org.springframework.stereotype.Repository;
 
 /**
  *
  * @author Olaa
  */
+
+@Repository
 public class JpaUserStatusDao extends GenericJpaDao<UserStatus, Short> implements UserStatusDao{
     
 }
