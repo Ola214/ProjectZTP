@@ -5,6 +5,9 @@
  */
 package com.projekt.projectztp.controller;
 
+import com.projekt.projectztp.dao.UserTypeDao;
+import com.projekt.projectztp.entity.UserType;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,9 +18,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @Controller
 public class ProbnyController {
-    
+
+    @Autowired
+    UserTypeDao userTypeDao;
+
     @RequestMapping("/")
-	public String listaKotow(Model model) {
-		return "index";
-	}
+    public String listaKotow(Model model) {
+        UserType userType = new UserType();
+        userType.setName("admin");
+        userTypeDao.save(userType);
+        
+        return "index";
+    }
 }
