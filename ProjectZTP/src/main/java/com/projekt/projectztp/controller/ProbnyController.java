@@ -19,14 +19,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class ProbnyController {
 
-   @Autowired
-    UserTypeDao userTypeDao;
+/*   @Autowired
+    UserTypeDao userTypeDao;*/
 
     @RequestMapping("/")
     public String listaKotow(Model model) {
-        UserType userType = new UserType();
+     /*   UserType userType = new UserType();
         userType.setName("admin");
-        userTypeDao.save(userType);
+        userTypeDao.save(userType);*/
         
         return "index";
     }
