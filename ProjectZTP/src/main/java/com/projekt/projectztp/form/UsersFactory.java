@@ -10,5 +10,12 @@ package com.projekt.projectztp.form;
  * @author Olaa
  */
 public class UsersFactory {
-    
+    public IUser createUser(String userType){
+        if(userType.equals("normalUser"))
+            return new NormalUser();
+        else if(userType.equals("admin"))
+            return new Admin();
+        else 
+            return null;
+    }
 }

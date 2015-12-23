@@ -5,10 +5,13 @@
  */
 package com.projekt.projectztp.form;
 
+import com.projekt.projectztp.entity.Purchase;
+
 /**
  *
  * @author Olaa
  */
-public interface IUser {
-    
+interface IUser {
+    void editAccount();
+    void addOrder(Purchase p);   
 }
