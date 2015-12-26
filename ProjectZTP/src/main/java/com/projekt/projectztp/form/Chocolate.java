@@ -9,6 +9,6 @@ package com.projekt.projectztp.form;
  *
  * @author Olaa
  */
-public class Chocolate {
+public class Chocolate extends Extra{
     
 }

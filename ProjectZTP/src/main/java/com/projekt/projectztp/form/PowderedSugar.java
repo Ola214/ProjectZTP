@@ -9,6 +9,6 @@ package com.projekt.projectztp.form;
  *
  * @author Olaa
  */
-public class PowderedSugar {
+public class PowderedSugar extends Extra{
     
 }

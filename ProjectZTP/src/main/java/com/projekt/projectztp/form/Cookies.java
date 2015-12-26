@@ -9,6 +9,6 @@ package com.projekt.projectztp.form;
  *
  * @author Olaa
  */
-public class Cookies {
+public class Cookies implements IProduct{
     
 }
