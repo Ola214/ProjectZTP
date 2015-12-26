@@ -11,6 +11,11 @@ package com.projekt.projectztp.form;
  */
 public class Cake implements IProduct{
 
+    private Long id = null; 
+    private String name = null;
+    private float price = 0;
+    
+    
     @Override
     public void add() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
