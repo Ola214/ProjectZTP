@@ -7,11 +7,14 @@ package com.projekt.projectztp.dao;
 
 import com.projekt.projectztp.entity.Product;
 import com.projekt.projectztp.entity.Purchase;
+import java.util.List;
 
 /**
  *
  * @author Olaa
  */
 public interface ProductDao  extends GenericDao<Product,Long>  {
+    
+    public List<Product> findAll();
     
 }
