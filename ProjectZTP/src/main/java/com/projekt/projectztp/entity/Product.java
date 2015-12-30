@@ -6,6 +6,7 @@
 package com.projekt.projectztp.entity;
 
 import java.io.Serializable;
+import java.util.Iterator;
 import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
@@ -131,5 +132,7 @@ public class Product implements Serializable {
     public String toString() {
         return "com.projekt.projectztp.entity.Product[ id=" + id + " ]";
     }
+    
+    
     
 }
