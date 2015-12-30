@@ -11,6 +11,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
+import java.util.NoSuchElementException;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
@@ -44,29 +45,28 @@ public class Store {
         });
     }
     
-    public Iterator<Product> createNameIterator(int x, int y) {
-        return new NameIterator(x, y);
+    public Iterator<Product> createNameIterator(int x) {
+        return new NameIterator(x);
     }
 
-    public Iterator<Product> createPriceIterator(int x, int y) {
-        return new PriceIterator(x, y);
+    public Iterator<Product> createPriceIterator(int x) {
+        return new PriceIterator(x);
     }
 
 
     class NameIterator implements Iterator<Product> {
-        int x = 0, y = 0;
+        int x = 0;
 
         public NameIterator() {
         }
 
-        public NameIterator(int x, int y) {
+        public NameIterator(int x) {
             this.x = x;
-            this.y = y;
         }
 
         @Override
         public boolean hasNext() {
-            if (y < matrix.length && x < matrix[y].length) {
+            if (x < productsToName.size()) {
                 return true;
             } else {
                 return false;
@@ -75,31 +75,28 @@ public class Store {
 
         @Override
         public Product next() {
-            if (x == matrix[y].length - 1) {
-                Product tmp = matrix[y][x];
-                x = 0;
-                y++;
-                return tmp;
+            if(hasNext()){
+                return productsToName.get(x++);
+            }else{
+                throw new NoSuchElementException("There are no elements size = " + productsToName.size());
             }
-            return matrix[y][x++];
         }
 
     }
 
     class PriceIterator implements Iterator<Product> {
-        int x = 0, y = 0;
+        int x = 0;
 
         public PriceIterator() {
         }
 
-        public PriceIterator(int x, int y) {
+        public PriceIterator(int x) {
             this.x = x;
-            this.y = y;
         }
 
-         @Override
+        @Override
         public boolean hasNext() {
-            if (y < matrix.length && x < matrix[y].length) {
+            if (x < productsToPrice.size()) {
                 return true;
             } else {
                 return false;
@@ -108,13 +105,11 @@ public class Store {
 
         @Override
         public Product next() {
-            if (x == matrix[y].length - 1) {
-                Product tmp = matrix[y][x];
-                x = 0;
-                y++;
-                return tmp;
+            if(hasNext()){
+                return productsToPrice.get(x++);
+            }else{
+                throw new NoSuchElementException("There are no elements size = " + productsToPrice.size());
             }
-            return matrix[y][x++];
         }
 
     }
