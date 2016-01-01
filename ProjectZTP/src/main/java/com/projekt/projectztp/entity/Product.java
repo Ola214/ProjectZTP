@@ -6,6 +6,7 @@
 package com.projekt.projectztp.entity;
 
 import java.io.Serializable;
+import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 import javax.persistence.Basic;
@@ -133,6 +134,18 @@ public class Product implements Serializable {
         return "com.projekt.projectztp.entity.Product[ id=" + id + " ]";
     }
     
+     public static final Comparator<Product> nameComparator = new Comparator<Product>(){
+        @Override
+        public int compare(Product product1, Product product2){
+            return product1.getName().compareTo(product2.getName());
+        }
+    };
     
+    public static final Comparator<Product> priceComparator = new Comparator<Product>(){
+        @Override
+            public int compare(Product product1, Product product2){
+                return Float.compare(product1.getPrice(),product2.getPrice());
+            }
+    };
     
 }
