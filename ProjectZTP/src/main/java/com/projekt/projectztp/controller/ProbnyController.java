@@ -25,32 +25,28 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class ProbnyController {
 
-/*   @Autowired
-    UserTypeDao userTypeDao;*/
-    
+    /*   @Autowired
+     UserTypeDao userTypeDao;*/
     @Autowired
     ProductDao productDao;
-    
 
-
-    private Iterator<Product> iterator;
-    
     @RequestMapping("/")
-    public String listaKotow(Model model) {
-     /*   UserType userType = new UserType();
-        userType.setName("admin");
-        userTypeDao.save(userType);*/
+    public String listaProduktow(Model model) {
+        /*   UserType userType = new UserType();
+         userType.setName("admin");
+         userTypeDao.save(userType);*/
+        Iterator<Product> iterator;
         List<Product> products = productDao.findAll();
         Store store = new Store(products);
-        
+
         iterator = store.createNameIterator();
         List<String> produkty = new ArrayList<String>();
-        while(iterator.hasNext()){
+        while (iterator.hasNext()) {
             Product product = iterator.next();
             produkty.add(product.getName());
         }
         model.addAttribute("produkty", produkty);
-        
-        return "index";
+
+        return "index2";
     }
 }
