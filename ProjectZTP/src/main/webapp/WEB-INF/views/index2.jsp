@@ -11,9 +11,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
         <title>Wypożyczalnia</title>
-        <meta name="description" content="Serwis o starych grach pochodzÄcych z Nintendo Entertainment System">
-        <meta name="keywords" content="gry, komputerowe, retro, nes, konsole, retrogranie, stare gry">
-        <link href="style3.css" rel="stylesheet" type="text/css">
+        <link href="style.css" rel="stylesheet" type="text/css">
         <link href="css/fontello.css" rel="stylesheet" type="text/css">
         <link href='https://fonts.googleapis.com/css?family=Lato:400,700&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
 
@@ -23,7 +21,7 @@
         <div class="wrapper">
             <div class="header">
                 <div class="logo">
-                    <img src="ProjectZTP/pad.png" style="float: left;">
+                    <img src="pad.png" style="float: left;">
                     <span id="logo2"style="color: #c34f4f">wypozyczalnia</span>.com
                     <div style="clear: both">
                     </div>
