@@ -46,6 +46,7 @@ public class Store {
         int x = 0;
 
         public NameIterator() {
+             productsToName = sortByName(products);
         }
 
         @Override
@@ -60,6 +61,7 @@ public class Store {
         @Override
         public Product next() {
             if (hasNext()) {
+               
                 return (Product) productsToName.get(x++);
             } else {
                 throw new NoSuchElementException("There are no elements size = " + productsToName.size());
@@ -73,6 +75,7 @@ public class Store {
         int x = 0;
 
         public PriceIterator() {
+            productsToPrice = sortByPrice(products);
         }
 
         @Override
