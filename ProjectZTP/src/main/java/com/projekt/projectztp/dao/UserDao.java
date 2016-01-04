@@ -5,7 +5,9 @@
  */
 package com.projekt.projectztp.dao;
 
+import com.projekt.projectztp.entity.Product;
 import com.projekt.projectztp.entity.User;
+import java.util.List;
 
 /**
  *
@@ -13,4 +15,5 @@ import com.projekt.projectztp.entity.User;
  */
 public interface UserDao extends GenericDao<User,Long>  {
     
+     public User findByLoginAndPassword(String login, String password);
 }

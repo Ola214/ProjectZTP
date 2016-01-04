@@ -5,8 +5,16 @@
  */
 package com.projekt.projectztp.controller;
 
+import com.projekt.projectztp.dao.UserDao;
+import com.projekt.projectztp.entity.User;
+import com.projekt.projectztp.formToControllers.LoginForm;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
@@ -16,8 +24,25 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class LoginController {
     
+    @Autowired
+    UserDao userDao;
+    
     @RequestMapping("/login")
     public String frontLogin(Model model) {
         return "login";
+    }
+    
+    @RequestMapping("/postLogin")
+    public String postLogin(HttpServletRequest request, HttpServletResponse response, @ModelAttribute("loginForm") LoginForm loginForm) {
+        String login = loginForm.getLogin();
+        String password = loginForm.getPassword();
+        
+        User user = userDao.findByLoginAndPassword(login, password);
+        
+        if(user != null){
+            HttpSession session = request.getSession();
+            session.setAttribute("User", user);
+        }
+        return "redirect:/";
     }
 }
