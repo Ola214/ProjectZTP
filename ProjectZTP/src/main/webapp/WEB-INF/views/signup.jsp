@@ -1,14 +1,13 @@
 
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="pl">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
-        <title>Wypożyczalnia</title>
-        <meta name="description" content="Serwis o starych grach pochodzÄcych z Nintendo Entertainment System">
-        <meta name="keywords" content="gry, komputerowe, retro, nes, konsole, retrogranie, stare gry">
+        <title>Piekarnia</title>
         <style type="text/css">
 
             input[type=text] {
@@ -250,14 +249,15 @@
         <div class="wrapper">
             <div class="header">
                 <div class="logo">
-                    <span id="logo2"style="color: #c34f4f">wypozyczalnia</span>.com
+                   
+                    <span id="logo2"style="color: #c34f4f">piekarnia</span>.com
                     <div style="clear: both">
                     </div>
                 </div>
                 <div class="nav">
                     <ol>
-                        <li><a href="index2.jsp">Strona główna</a></li>
-                        <li><a href="#">Wypożyczalnia</a>
+                        <li><a href="/ProjectZTP/">Strona główna</a></li>
+                        <li><a href="#">Piekarnia</a>
                             <ul>
                                 <li><a href="FrontBin">Kosz</a></li>
                                 <li><a href="FrontArchieve">Archiwum</a></li>
@@ -275,18 +275,18 @@
                                 <li><a href="FrontQuote">Wpisami</a></li>
                             </ul>
                         </li>
-                        <li><a href="login2">Zaloguj</a>
+                        <li><a href="/ProjectZTP/login">Zaloguj</a>
                         </li>
-                        <li><a href="signup2">Zarejestruj</a>
+                        <li><a href="/ProjectZTP/signup">Zarejestruj</a>
                         </li>
-                        <li><a href="Logout">Wyloguj</a></li>
+                        <li><a href="/ProjectZTP/logout">Wyloguj</a></li>
 
                     </ol>
                 </div>
                 <div class="content">
-                    <br><br><br><br><br><br>
+                    <br>
                     <h1>Zarejestruj się!</h1>
-                    <form action="PostSignup" method="POST">
+                    <form action="postSignup" method="POST">
                         <input type="text" name="firstname" value="" placeholder="imię"/><br><br>
                         <input type="text" name="surname" value="" placeholder="nazwisko"/><br><br>
                         <input type="text" name="mail" value="" placeholder="adres e-mail"/><br><br>
@@ -294,7 +294,7 @@
                         <input type="text" name="password" value="" placeholder="hasło"/><br><br>
                         Typ użytkownika: user<input type="radio" name="type" value="user" checked="checked" /> worker<input type="radio" name="type" value="worker" checked="checked" /> administrator<input type="radio" name="type" value="administrator" checked="checked" /><br><br>
                         <input type="submit" value="Zarejestruj się" name="submit" />
-                    </form><br><br><br><br><br><br>
+                    </form><br>
                 </div>
                 <div class="socials">
                     <div class="socialdivs">
@@ -305,7 +305,7 @@
                         <div style="clear: both"></div>
                     </div>
                 </div>
-                <div class="footer">wypozyczalnia.com &copy; 2015 Thank you for your visit;-)</div>
+                <div class="footer">piekarnia.com &copy; 2015 Thank you for your visit;-)</div>
             </div>
             
     </body>

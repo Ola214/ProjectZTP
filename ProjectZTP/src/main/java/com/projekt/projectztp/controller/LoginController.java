@@ -6,12 +6,18 @@
 package com.projekt.projectztp.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
  *
  * @author Olaa
  */
 @Controller
-public class RegistryController {
+public class LoginController {
     
+    @RequestMapping("/login")
+    public String frontLogin(Model model) {
+        return "login";
+    }
 }

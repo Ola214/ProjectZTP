@@ -2,15 +2,12 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 
-
-
 <!DOCTYPE html>
 <html lang="pl">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
         <title>Piekarnia</title>
-
         <style type="text/css">
 
             input[type=text] {
@@ -244,7 +241,7 @@
                 color: #451717;
             }
 
-            
+
         </style>
     </head>
 
@@ -287,23 +284,14 @@
                     </ol>
                 </div>
                 <div class="content">
-                    <h1>Cennik</h1>
-                    <table border="1">
-                        <tr>
-                            <th>Id</td>
-                            <th>Nazwa</td>
-                            <th>Cena</td>
-                            <th>Kategoria</td>
-                        </tr>
-                        <c:forEach var="Product" items="${produkty}">
-                            <tr> 
-                                <td>${Product.id}</td>
-                                <td>${Product.name}</td>
-                                <td>${Product.price}</td>
-                                <td>${Product.cathegoryId.name}</td>
-                            </tr>
-                        </c:forEach></table>
-                    </br>
+                    <br>
+                    <h1>Zaloguj się!</h1>
+                    <form action="postLogin" method="POST">
+                        <input type="text" name="login" value="" placeholder="login"/><br><br>
+                        <input type="text" name="password" value="" placeholder="hasło"/><br><br>
+                        <input type="submit" value="Zaloguj się" name="submit"/>
+                    </form>
+                    <br>
                 </div>
                 <div class="socials">
                     <div class="socialdivs">
@@ -316,6 +304,6 @@
                 </div>
                 <div class="footer">piekarnia.com &copy; 2015 Thank you for your visit;-)</div>
             </div>
-           
+            
     </body>
 </html>

@@ -27,10 +27,10 @@ public class FrontController {
     ProductDao productDao;
     
     @RequestMapping("/")
-    public String listaProduktow(Model model) {
+    public String frontPage(Model model) {
         Iterator<Product> iterator;
         List<Product> products = productDao.findAll();
-        Store store = new Store(products);
+        /*Store store = new Store(products);
 
         iterator = store.createNameIterator();
         List<Product> produkty = new ArrayList<Product>();
@@ -38,7 +38,8 @@ public class FrontController {
             Product product = iterator.next();
             produkty.add(product);
         }
-        model.addAttribute("produkty", produkty);
+        model.addAttribute("produkty", produkty);*/
+        model.addAttribute("produkty", products);
 
         return "index";
     }
