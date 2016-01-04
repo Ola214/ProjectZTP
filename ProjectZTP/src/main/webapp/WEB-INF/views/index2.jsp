@@ -15,13 +15,248 @@
         <link href="css/fontello.css" rel="stylesheet" type="text/css">
         <link href='https://fonts.googleapis.com/css?family=Lato:400,700&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
 
+        <style type="text/css">
+
+            input[type=text] {
+                font-size: 20px;
+                font-weight: bold;
+                font-family: 'Lato', sans-serif;
+                padding:5px; 
+                border:2px solid #ccc; 
+                -webkit-border-radius: 5px;
+                border-radius: 5px;
+            }
+
+            input[type=text]:focus {
+                border-color:#333;
+            }
+
+            input[type=submit] {
+                padding:5px 15px; 
+                background-color: #c34f4f;
+                color: #ffffff;
+                font-size: 20px;
+                font-weight: bold;
+                border:0 none;
+                cursor:pointer;
+                -webkit-border-radius: 5px;
+                border-radius: 5px; 
+                font-family: 'Lato', sans-serif;
+            }
+
+            body
+            {
+                background-color: #303030;
+                color: #ffffff;
+                font-family: 'Lato', sans-serif;
+                font-size: 20px;
+                margin: 0 !important;
+            }
+
+            .wraper
+            {
+                width: 100%;
+            }
+
+            #logo2
+            {
+                color: #c34f4f;
+            }
+
+            .header
+            {
+                width: 100%;
+                padding: 40px 0; /*pading w pionie, padding w poziomie*/
+            }
+
+            .logo
+            {
+                width: 500px;
+                font-size: 48px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .nav
+            {
+                width: 100%;
+                padding: 10px 0;
+                background-color: #c34f4f;
+                text-align: center;
+                border-top: 1px solid #751b1b;
+                border-bottom: 1px solid #751b1b;
+            }
+
+            .content
+            {
+                //text-align: center;
+                width: 1000px;
+                margin-left: auto;
+                margin-right: auto;
+                text-align: justify;
+                padding-top: 10px;
+            }
+
+            .socials
+            {
+                width: 100%;
+                text-align: center;
+                background-color: #292929;
+            }
+
+            .socialdivs
+            {
+                width: 1000px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .fb
+            {
+                width: 250px;
+                height: 155px;
+                float:left;
+            }
+
+            .fb:hover
+            {
+                background-color: #4668b3;
+            }
+
+            .yt
+            {
+                width: 250px;
+                height: 155px;
+                float:left;
+            }
+
+            .yt:hover
+            {
+                background-color: #d94348;
+            }
+
+            .tw
+            {
+                width: 250px;
+                height: 155px;
+                float:left;
+            }
+
+            .tw:hover
+            {
+                background-color: #3095d3;
+            }
+
+            .gplus
+            {
+                width: 250px;
+                height: 155px;
+                float:left;
+            }
+
+            .gplus:hover
+            {
+                background-color: #d95333;
+            }
+
+            .footer
+            {
+                text-align: center;
+                background-color: #222222;
+                padding: 30px;
+            }
+
+            .sticky
+            {
+                width: 100%;
+                position: fixed;
+                left: 0;
+                top: 0;
+                z-index: 100; /*zasłanianie się, będzie na wierzchu, im większy z-index tym bardziej na wierzchu */
+            }
+
+            ol
+            {
+                padding: 0;
+                margin: 0;
+                list-style-type: none;
+                font-size: 18px;
+                height: 35px;
+                line-height: 200%;
+                display: inline-block; /*wspoczyło text-align z nav*/
+            }
+
+            ol a
+            {
+                color: #ffffff;
+                text-decoration: none;
+                display: block;
+            }
+
+            ol > li /*stylizujemy element li, którego rodzicem jest ol */
+            {
+                float: left;
+                width: 150px;
+                height: 40px;
+                border-right: 1px dashed #751b1b;
+            }
+
+            ol > li:first-child
+            {
+                border-left: 1px dashed #751b1b;
+            }
+
+            ol > li:hover
+            {
+                background-color: #cf6969;
+            }
+
+            ol > li:hover > a
+            {
+                color: #451717;
+            }
+
+            ol > li > ul
+            {
+                list-style-type: none;
+                padding: 0;
+                margin: 0;
+                height: 40px;
+                display: none; /*nie wyświetlaj podmenu*/
+            }
+
+            ol > li:hover > ul /*hover może ogarnąć na którym elemencie zaszła akcja - gdzie jest kursor*/
+            {
+                display: block;
+            }
+
+            ol > li > ul > li /*ol ma potomka li, a li potomka ul ... */
+            {
+                background-color: #cf6969;
+                position: relative;
+                z-index: 100;
+                border-top: 1px dashed #751b1b;
+            }
+
+            ol > li > ul > li:hover
+            {
+                background-color: #c34f4f;
+            }
+
+            ol > li > ul > li:hover > a
+            {
+                color: #451717;
+            }
+
+            
+        </style>
     </head>
 
     <body>
         <div class="wrapper">
             <div class="header">
                 <div class="logo">
-                    <img src="pad.png" style="float: left;">
+                   
                     <span id="logo2"style="color: #c34f4f">wypozyczalnia</span>.com
                     <div style="clear: both">
                     </div>
