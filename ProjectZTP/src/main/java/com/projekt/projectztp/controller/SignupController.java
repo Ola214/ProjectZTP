@@ -24,7 +24,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @Controller
 public class SignupController {
-    
+
     @RequestMapping("/signup")
     public String frontSignup(Model model) {
         SignupForm signupForm = new SignupForm();
@@ -33,29 +33,25 @@ public class SignupController {
     }
 
     @RequestMapping("/postSignup")
-    public String postSignup(HttpServletRequest request, HttpServletResponse response,@ModelAttribute("signupForm") @Valid SignupForm signupForm, BindingResult result) {
-        if(result.hasErrors()){
+    public String postSignup(HttpServletRequest request, HttpServletResponse response, @ModelAttribute("signupForm") @Valid SignupForm signupForm, BindingResult result) {
+        if (result.hasErrors()) {
             System.out.println("Cos poszlo nie tak");
         }
         UsersFactory usersFactory = new UsersFactory();
         IUser user;
-        if(signupForm.getUserTypeId() == 1){
+        if (signupForm.getUserTypeId() == 1) {
             user = usersFactory.createUser("admin");
-            user.setAddress(signupForm.getAddress());
-            user.setEmail(signupForm.getEmail());
-            user.setLogin(signupForm.getLogin());
-            user.setName(signupForm.getName());
-            user.setPassword(signupForm.getPassword());
-            user.setSurname(signupForm.getSurname());
-        }else{
+
+        } else {
             user = usersFactory.createUser("normalUser");
-            user.setAddress(signupForm.getAddress());
-            user.setEmail(signupForm.getEmail());
-            user.setLogin(signupForm.getLogin());
-            user.setName(signupForm.getName());
-            user.setPassword(signupForm.getPassword());
-            user.setSurname(signupForm.getSurname());
+            
         }
+        user.setAddress(signupForm.getAddress());
+        user.setEmail(signupForm.getEmail());
+        user.setLogin(signupForm.getLogin());
+        user.setName(signupForm.getName());
+        user.setPassword(signupForm.getPassword());
+        user.setSurname(signupForm.getSurname());
         return "redirect:/";
     }
 }
