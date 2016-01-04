@@ -2,6 +2,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <!DOCTYPE html>
 <html lang="pl">
     <head>
@@ -286,15 +287,16 @@
                 <div class="content">
                     <br>
                     <h1>Zarejestruj się!</h1>
-                    <form action="postSignup" method="POST">
-                        <input type="text" name="firstname" value="" placeholder="imię"/><br><br>
-                        <input type="text" name="surname" value="" placeholder="nazwisko"/><br><br>
-                        <input type="text" name="mail" value="" placeholder="adres e-mail"/><br><br>
-                        <input type="text" name="login" value="" placeholder="login"/><br><br>
-                        <input type="text" name="password" value="" placeholder="hasło"/><br><br>
-                        Typ użytkownika: user<input type="radio" name="type" value="user" checked="checked" /> worker<input type="radio" name="type" value="worker" checked="checked" /> administrator<input type="radio" name="type" value="administrator" checked="checked" /><br><br>
+                    <form:form action="/ProjectZTP/postSignup" method="POST" modelAttribute="signupForm">
+                        <form:input type="text" path="name" value="" placeholder="imię"/><br><br>
+                        <form:input type="text" path="surname" value="" placeholder="nazwisko"/><br><br>
+                        <form:input type="text" path="email" value="" placeholder="adres e-mail"/><br><br>
+                        <form:input type="text" path="login" value="" placeholder="login"/><br><br>
+                        <form:input type="text" path="password" value="" placeholder="hasło"/><br><br>
+                        <form:input type="text" path="address" value="" placeholder="address"/><br><br>
+                        Typ użytkownika: user<form:radiobutton path="userTypeId" value="1" checked="checked" /> administrator<form:radiobutton path="userTypeId" value="2" checked="checked" /> użytkownik<br><br>
                         <input type="submit" value="Zarejestruj się" name="submit" />
-                    </form><br>
+                    </form:form><br>
                 </div>
                 <div class="socials">
                     <div class="socialdivs">

@@ -11,7 +11,7 @@ import com.projekt.projectztp.entity.Purchase;
  *
  * @author Olaa
  */
-interface IUser {
+public interface IUser {
     void editAccount();
     void addOrder(Purchase p);   
 }
