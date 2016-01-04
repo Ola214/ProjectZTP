@@ -41,9 +41,20 @@ public class SignupController {
         IUser user;
         if(signupForm.getUserTypeId() == 1){
             user = usersFactory.createUser("admin");
-            
+            user.setAddress(signupForm.getAddress());
+            user.setEmail(signupForm.getEmail());
+            user.setLogin(signupForm.getLogin());
+            user.setName(signupForm.getName());
+            user.setPassword(signupForm.getPassword());
+            user.setSurname(signupForm.getSurname());
         }else{
             user = usersFactory.createUser("normalUser");
+            user.setAddress(signupForm.getAddress());
+            user.setEmail(signupForm.getEmail());
+            user.setLogin(signupForm.getLogin());
+            user.setName(signupForm.getName());
+            user.setPassword(signupForm.getPassword());
+            user.setSurname(signupForm.getSurname());
         }
         return "redirect:/";
     }

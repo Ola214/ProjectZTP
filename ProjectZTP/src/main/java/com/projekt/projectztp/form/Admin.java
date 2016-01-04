@@ -7,16 +7,25 @@ package com.projekt.projectztp.form;
 
 import com.projekt.projectztp.entity.Purchase;
 import com.projekt.projectztp.entity.User;
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.Setter;
 
-
+@Getter
+@Setter
 public class Admin implements IUser{
     
-    private User admin;
+    private String address;
+    private String login;
+    private String password;
+    private String name;
+    private String surname;
+    private String email;
+    @Setter(AccessLevel.NONE)
+    private Short userTypeId;
     
     public Admin(){
-        admin = new User();
-        admin.setUserStatusId(null);
-        admin.setUserTypeId(null);
+        userTypeId = 1;
     }
 
     @Override
