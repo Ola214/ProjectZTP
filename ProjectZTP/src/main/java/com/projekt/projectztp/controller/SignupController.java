@@ -52,6 +52,8 @@ public class SignupController {
         user.setName(signupForm.getName());
         user.setPassword(signupForm.getPassword());
         user.setSurname(signupForm.getSurname());
+        
+        
         return "redirect:/";
     }
 }
