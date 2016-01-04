@@ -287,14 +287,23 @@
                     </ol>
                 </div>
                 <div class="content">
+                    <h1>Cennik</h1>
                     <table border="1">
+                        <tr>
+                            <th>Id</td>
+                            <th>Nazwa</td>
+                            <th>Cena</td>
+                            <th>Kategoria</td>
+                        </tr>
                         <c:forEach var="Product" items="${produkty}">
-                            <tr>
-                                
+                            <tr> 
+                                <td>${Product.id}</td>
                                 <td>${Product.name}</td>
-                                
+                                <td>${Product.price}</td>
+                                <td>${Product.cathegoryId.name}</td>
                             </tr>
                         </c:forEach></table>
+                    </br>
                 </div>
                 <div class="socials">
                     <div class="socialdivs">
