@@ -1,10 +1,9 @@
-
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
-
-
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+
+
+
 <!DOCTYPE html>
 <html lang="pl">
     <head>
@@ -289,9 +288,11 @@
                 </div>
                 <div class="content">
                     <table border="1">
-                        <c:forEach items="${produkty}" var="produkt">
+                        <c:forEach var="Product" items="${produkty}">
                             <tr>
-                                <td>${produkt}</td>
+                                
+                                <td>${Product.name}</td>
+                                
                             </tr>
                         </c:forEach></table>
                 </div>

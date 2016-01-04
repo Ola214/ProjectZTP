@@ -6,9 +6,7 @@
 package com.projekt.projectztp.controller;
 
 import com.projekt.projectztp.dao.ProductDao;
-import com.projekt.projectztp.dao.UserTypeDao;
 import com.projekt.projectztp.entity.Product;
-import com.projekt.projectztp.entity.UserType;
 import com.projekt.projectztp.form.Store;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -23,36 +21,26 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * @author Olaa
  */
 @Controller
-public class ProbnyController {
-
-    /*   @Autowired
-     UserTypeDao userTypeDao;*/
+public class FrontController {
+   
     @Autowired
     ProductDao productDao;
-
+    
     @RequestMapping("/")
     public String listaProduktow(Model model) {
-        /*   UserType userType = new UserType();
-         userType.setName("admin");
-         userTypeDao.save(userType);*/
         Iterator<Product> iterator;
         List<Product> products = productDao.findAll();
         Store store = new Store(products);
 
         iterator = store.createNameIterator();
-        List<String> produkty = new ArrayList<String>();
+        List<Product> produkty = new ArrayList<Product>();
         while (iterator.hasNext()) {
             Product product = iterator.next();
-            produkty.add(product.getName());
+            produkty.add(product);
         }
         model.addAttribute("produkty", produkty);
 
-        return "index2";
+        return "index";
     }
     
-    @RequestMapping("/signup2")
-    public String signup(Model model) {
-        return "signup2";
-    }
-    }
-
+}
