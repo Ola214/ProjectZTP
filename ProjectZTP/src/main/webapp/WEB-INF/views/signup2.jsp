@@ -1,8 +1,4 @@
 
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
-
-
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -11,7 +7,8 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
         <title>Wypożyczalnia</title>
-
+        <meta name="description" content="Serwis o starych grach pochodzÄcych z Nintendo Entertainment System">
+        <meta name="keywords" content="gry, komputerowe, retro, nes, konsole, retrogranie, stare gry">
         <style type="text/css">
 
             input[type=text] {
@@ -253,7 +250,6 @@
         <div class="wrapper">
             <div class="header">
                 <div class="logo">
-                   
                     <span id="logo2"style="color: #c34f4f">wypozyczalnia</span>.com
                     <div style="clear: both">
                     </div>
@@ -279,21 +275,26 @@
                                 <li><a href="FrontQuote">Wpisami</a></li>
                             </ul>
                         </li>
-                        <li><a href="login2.jsp">Zaloguj</a>
+                        <li><a href="login2">Zaloguj</a>
                         </li>
-                        <li><a href="ProjectZTP/signup2">Zarejestruj</a>
+                        <li><a href="signup2">Zarejestruj</a>
                         </li>
                         <li><a href="Logout">Wyloguj</a></li>
 
                     </ol>
                 </div>
                 <div class="content">
-                    <table border="1">
-                        <c:forEach items="${produkty}" var="produkt">
-                            <tr>
-                                <td>${produkt}</td>
-                            </tr>
-                        </c:forEach></table>
+                    <br><br><br><br><br><br>
+                    <h1>Zarejestruj się!</h1>
+                    <form action="PostSignup" method="POST">
+                        <input type="text" name="firstname" value="" placeholder="imię"/><br><br>
+                        <input type="text" name="surname" value="" placeholder="nazwisko"/><br><br>
+                        <input type="text" name="mail" value="" placeholder="adres e-mail"/><br><br>
+                        <input type="text" name="login" value="" placeholder="login"/><br><br>
+                        <input type="text" name="password" value="" placeholder="hasło"/><br><br>
+                        Typ użytkownika: user<input type="radio" name="type" value="user" checked="checked" /> worker<input type="radio" name="type" value="worker" checked="checked" /> administrator<input type="radio" name="type" value="administrator" checked="checked" /><br><br>
+                        <input type="submit" value="Zarejestruj się" name="submit" />
+                    </form><br><br><br><br><br><br>
                 </div>
                 <div class="socials">
                     <div class="socialdivs">
@@ -306,6 +307,6 @@
                 </div>
                 <div class="footer">wypozyczalnia.com &copy; 2015 Thank you for your visit;-)</div>
             </div>
-           
+            
     </body>
 </html>

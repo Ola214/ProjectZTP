@@ -49,4 +49,10 @@ public class ProbnyController {
 
         return "index2";
     }
-}
+    
+    @RequestMapping("/signup2")
+    public String signup(Model model) {
+        return "signup2";
+    }
+    }
+
