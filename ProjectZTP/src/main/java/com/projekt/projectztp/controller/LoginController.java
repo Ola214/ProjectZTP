@@ -11,9 +11,11 @@ import com.projekt.projectztp.formToControllers.LoginForm;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -29,16 +31,18 @@ public class LoginController {
     
     @RequestMapping("/login")
     public String frontLogin(Model model) {
+        LoginForm loginForm = new LoginForm();
+        model.addAttribute("loginForm", loginForm);
         return "login";
     }
     
     @RequestMapping("/postLogin")
-    public String postLogin(HttpServletRequest request, HttpServletResponse response, @ModelAttribute("loginForm") LoginForm loginForm) {
+    public String postLogin(HttpServletRequest request, HttpServletResponse response,@ModelAttribute("loginForm") @Valid LoginForm loginForm, BindingResult result) {
         String login = loginForm.getLogin();
         String password = loginForm.getPassword();
         
         User user = userDao.findByLoginAndPassword(login, password);
-        
+
         if(user != null){
             HttpSession session = request.getSession();
             session.setAttribute("User", user);

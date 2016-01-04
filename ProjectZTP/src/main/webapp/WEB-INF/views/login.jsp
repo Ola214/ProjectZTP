@@ -1,5 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
 
 <!DOCTYPE html>
@@ -286,11 +287,11 @@
                 <div class="content">
                     <br>
                     <h1>Zaloguj się!</h1>
-                    <form action="postLogin" method="POST">
-                        <input type="text" name="login" value="" placeholder="login"/><br><br>
-                        <input type="text" name="password" value="" placeholder="hasło"/><br><br>
+                    <form:form action="/ProjectZTP/postLogin" method="POST" modelAttribute="loginForm">
+                        <form:input type="text" path="login" value="" placeholder="login"/><br><br>
+                        <form:input type="text" path="password" value="" placeholder="hasło"/><br><br>
                         <input type="submit" value="Zaloguj się" name="submit"/>
-                    </form>
+                    </form:form>
                     <br>
                 </div>
                 <div class="socials">
