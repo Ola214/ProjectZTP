@@ -9,11 +9,13 @@ import com.projekt.projectztp.dao.UserStatusDao;
 import com.projekt.projectztp.dao.UserTypeDao;
 import com.projekt.projectztp.entity.Purchase;
 import com.projekt.projectztp.entity.User;
+import com.projekt.projectztp.entity.UserStatus;
 import com.projekt.projectztp.entity.UserType;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 @Getter
 @Setter
@@ -29,18 +31,13 @@ public class Admin implements IUser{
     
     public Admin(){
         user = new User();
-        user.setUserStatusId(userStatusDao.findByName("new"));
-        user.setUserTypeId(userTypeDao.findByName("admin"));
+        
+    }
+    
+    public void additionalStuff(UserType userType, UserStatus userStatus){
+        user.setUserStatusId(userStatus);
+        user.setUserTypeId(userType);
     }
 
-    @Override
-    public void editAccount() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void addOrder(Purchase p) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
     
 }

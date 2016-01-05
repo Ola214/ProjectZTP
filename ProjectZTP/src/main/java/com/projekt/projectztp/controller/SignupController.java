@@ -33,8 +33,12 @@ public class SignupController {
 
     @Autowired
     private UserDao userDao;
-
     
+    @Autowired
+    private UserStatusDao userStatusDao;
+
+    @Autowired
+    private UserTypeDao userTypeDao;
 
     @RequestMapping("/signup")
     public String frontSignup(Model model) {
@@ -58,13 +62,16 @@ public class SignupController {
         if (signupForm.getUserTypeId() == 1) {
             
             user = usersFactory.createUser("admin");
+            user.additionalStuff(userTypeDao.findByName("admin"),userStatusDao.findByName("new"));
 
         } else {
             
             user = usersFactory.createUser("normalUser");
+            user.additionalStuff(userTypeDao.findByName("normalUser"),userStatusDao.findByName("new"));
 
         }
-
+        
+        
         user.getUser().setAddress(signupForm.getAddress());
         user.getUser().setEmail(signupForm.getEmail());
         user.getUser().setLogin(signupForm.getLogin());

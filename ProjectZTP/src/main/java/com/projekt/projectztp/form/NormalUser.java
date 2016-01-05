@@ -15,6 +15,7 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /**
  *
@@ -26,28 +27,16 @@ public class NormalUser implements IUser{
 
     private User user;
     
-    @Autowired
-    private UserTypeDao userTypeDao;
-
-    @Autowired
-    private UserStatusDao userStatusDao;
     
     public NormalUser(){
         user = new User();
-        user.setUserTypeId(userTypeDao.findByName("normalUser"));
-        user.setUserStatusId(userStatusDao.findByName("new"));
+        
     }
     
-    
-    
-    @Override
-    public void editAccount() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void additionalStuff(UserType userType, UserStatus userStatus){
+        user.setUserTypeId(userType);
+        user.setUserStatusId(userStatus);
     }
 
-    @Override
-    public void addOrder(Purchase p) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
     
 }

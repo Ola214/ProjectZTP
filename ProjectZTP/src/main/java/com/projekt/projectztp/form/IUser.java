@@ -7,6 +7,8 @@ package com.projekt.projectztp.form;
 
 import com.projekt.projectztp.entity.Purchase;
 import com.projekt.projectztp.entity.User;
+import com.projekt.projectztp.entity.UserStatus;
+import com.projekt.projectztp.entity.UserType;
 
 /**
  *
@@ -16,7 +18,6 @@ import com.projekt.projectztp.entity.User;
 
 public interface IUser {
     User getUser();
-    void setUser(User user);
-    void editAccount();
-    void addOrder(Purchase p);   
+    void setUser(User user); 
+    void additionalStuff(UserType userType, UserStatus userStatus);
 }
