@@ -7,6 +7,8 @@ package com.projekt.projectztp.dao.jpa;
 
 import com.projekt.projectztp.dao.UserTypeDao;
 import com.projekt.projectztp.entity.UserType;
+import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -15,5 +17,12 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public class JpaUserTypeDao extends GenericJpaDao<UserType, Short> implements UserTypeDao{
-    
+    public UserType findByName(String name){
+        EntityManager em = getEntityManager();
+        TypedQuery<UserType> q = em.createNamedQuery("UserType.findByName",UserType.class);
+        q.setParameter("name", name);
+        UserType result = q.getSingleResult();
+        em.close();
+        return result;
+    }
 }

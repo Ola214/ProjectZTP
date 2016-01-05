@@ -9,6 +9,7 @@ import com.projekt.projectztp.dao.UserStatusDao;
 import com.projekt.projectztp.dao.UserTypeDao;
 import com.projekt.projectztp.entity.Purchase;
 import com.projekt.projectztp.entity.User;
+import com.projekt.projectztp.entity.UserStatus;
 import com.projekt.projectztp.entity.UserType;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -27,17 +28,14 @@ public class NormalUser implements IUser{
     
     @Autowired
     private UserTypeDao userTypeDao;
-    
+
     @Autowired
     private UserStatusDao userStatusDao;
     
     public NormalUser(){
         user = new User();
-        Short userTypeId = new Short("2");
-        Short userStatusId = new Short("1");
-        
-        user.setUserTypeId(userTypeDao.findById(Short.parseShort("2")));
-        user.setUserStatusId(userStatusDao.findById(Short.parseShort("1")));
+        user.setUserTypeId(userTypeDao.findByName("normalUser"));
+        user.setUserStatusId(userStatusDao.findByName("new"));
     }
     
     

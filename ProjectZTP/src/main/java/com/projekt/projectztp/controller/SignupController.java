@@ -6,6 +6,10 @@
 package com.projekt.projectztp.controller;
 
 import com.projekt.projectztp.dao.UserDao;
+import com.projekt.projectztp.dao.UserStatusDao;
+import com.projekt.projectztp.dao.UserTypeDao;
+import com.projekt.projectztp.entity.UserStatus;
+import com.projekt.projectztp.entity.UserType;
 import com.projekt.projectztp.form.IUser;
 import com.projekt.projectztp.form.UsersFactory;
 import com.projekt.projectztp.formToControllers.LoginForm;
@@ -29,7 +33,9 @@ public class SignupController {
 
     @Autowired
     private UserDao userDao;
+
     
+
     @RequestMapping("/signup")
     public String frontSignup(Model model) {
         SignupForm signupForm = new SignupForm();
@@ -41,27 +47,34 @@ public class SignupController {
     public String postSignup(HttpServletRequest request, HttpServletResponse response, @ModelAttribute("signupForm") @Valid SignupForm signupForm, BindingResult result) {
         if (result.hasErrors()) {
             System.out.println("Cos poszlo nie tak");
+
         }
         UsersFactory usersFactory = new UsersFactory();
         IUser user;
+
+        UserType userType;
+        UserStatus userStatus;
+
         if (signupForm.getUserTypeId() == 1) {
+            
             user = usersFactory.createUser("admin");
 
         } else {
-            user = usersFactory.createUser("normalUser");
             
+            user = usersFactory.createUser("normalUser");
+
         }
-        
+
         user.getUser().setAddress(signupForm.getAddress());
         user.getUser().setEmail(signupForm.getEmail());
         user.getUser().setLogin(signupForm.getLogin());
         user.getUser().setName(signupForm.getName());
         user.getUser().setPassword(signupForm.getPassword());
         user.getUser().setSurname(signupForm.getSurname());
+
         
         userDao.save(user.getUser());
-        
-        
+
         return "redirect:/";
     }
 }

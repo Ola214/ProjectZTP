@@ -12,5 +12,5 @@ import com.projekt.projectztp.entity.UserType;
  * @author Olaa
  */
 public interface UserTypeDao extends GenericDao<UserType,Short>  {
-    
+    public UserType findByName(String name);
 }

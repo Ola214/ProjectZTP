@@ -29,8 +29,8 @@ public class Admin implements IUser{
     
     public Admin(){
         user = new User();
-        user.setUserTypeId(userTypeDao.findById(Short.parseShort("1")));
-        user.setUserStatusId(userStatusDao.findById(Short.parseShort("1")));
+        user.setUserStatusId(userStatusDao.findByName("new"));
+        user.setUserTypeId(userTypeDao.findByName("admin"));
     }
 
     @Override

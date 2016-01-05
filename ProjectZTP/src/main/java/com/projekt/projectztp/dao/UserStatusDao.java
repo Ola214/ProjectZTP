@@ -12,5 +12,5 @@ import com.projekt.projectztp.entity.UserStatus;
  * @author Olaa
  */
 public interface UserStatusDao extends GenericDao<UserStatus,Short>  {
-    
+    public UserStatus findByName(String name);
 }
