@@ -5,27 +5,32 @@
  */
 package com.projekt.projectztp.form;
 
+import com.projekt.projectztp.dao.UserStatusDao;
+import com.projekt.projectztp.dao.UserTypeDao;
 import com.projekt.projectztp.entity.Purchase;
 import com.projekt.projectztp.entity.User;
+import com.projekt.projectztp.entity.UserType;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.beans.factory.annotation.Autowired;
 
 @Getter
 @Setter
 public class Admin implements IUser{
     
-    private String address;
-    private String login;
-    private String password;
-    private String name;
-    private String surname;
-    private String email;
-    @Setter(AccessLevel.NONE)
-    private Short userTypeId;
+    private User user;
+    
+    @Autowired
+    private UserTypeDao userTypeDao;
+    
+    @Autowired
+    private UserStatusDao userStatusDao;
     
     public Admin(){
-        userTypeId = 1;
+        user = new User();
+        user.setUserTypeId(userTypeDao.findById(Short.parseShort("1")));
+        user.setUserStatusId(userStatusDao.findById(Short.parseShort("1")));
     }
 
     @Override

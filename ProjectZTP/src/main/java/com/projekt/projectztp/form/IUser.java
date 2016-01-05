@@ -6,6 +6,7 @@
 package com.projekt.projectztp.form;
 
 import com.projekt.projectztp.entity.Purchase;
+import com.projekt.projectztp.entity.User;
 
 /**
  *
@@ -14,21 +15,8 @@ import com.projekt.projectztp.entity.Purchase;
 
 
 public interface IUser {
-    String getAddress();
-    void setAddress(String address);
-    String getLogin();
-    void setLogin(String login);
-    String getPassword();
-    void setPassword(String password);
-    String getName();
-    void setName(String name);
-    String getSurname();
-    void setSurname(String surname);
-    String getEmail();
-    void setEmail(String email);
-    Short getUserTypeId();
-
-    
+    User getUser();
+    void setUser(User user);
     void editAccount();
     void addOrder(Purchase p);   
 }

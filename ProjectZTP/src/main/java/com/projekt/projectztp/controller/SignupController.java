@@ -5,6 +5,7 @@
  */
 package com.projekt.projectztp.controller;
 
+import com.projekt.projectztp.dao.UserDao;
 import com.projekt.projectztp.form.IUser;
 import com.projekt.projectztp.form.UsersFactory;
 import com.projekt.projectztp.formToControllers.LoginForm;
@@ -12,6 +13,7 @@ import com.projekt.projectztp.formToControllers.SignupForm;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -25,6 +27,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class SignupController {
 
+    @Autowired
+    private UserDao userDao;
+    
     @RequestMapping("/signup")
     public String frontSignup(Model model) {
         SignupForm signupForm = new SignupForm();
@@ -46,12 +51,15 @@ public class SignupController {
             user = usersFactory.createUser("normalUser");
             
         }
-        user.setAddress(signupForm.getAddress());
-        user.setEmail(signupForm.getEmail());
-        user.setLogin(signupForm.getLogin());
-        user.setName(signupForm.getName());
-        user.setPassword(signupForm.getPassword());
-        user.setSurname(signupForm.getSurname());
+        
+        user.getUser().setAddress(signupForm.getAddress());
+        user.getUser().setEmail(signupForm.getEmail());
+        user.getUser().setLogin(signupForm.getLogin());
+        user.getUser().setName(signupForm.getName());
+        user.getUser().setPassword(signupForm.getPassword());
+        user.getUser().setSurname(signupForm.getSurname());
+        
+        userDao.save(user.getUser());
         
         
         return "redirect:/";

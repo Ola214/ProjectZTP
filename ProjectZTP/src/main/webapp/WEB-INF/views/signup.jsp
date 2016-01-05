@@ -294,7 +294,7 @@
                         <form:input type="text" path="login" value="" placeholder="login"/><br><br>
                         <form:input type="text" path="password" value="" placeholder="hasło"/><br><br>
                         <form:input type="text" path="address" value="" placeholder="address"/><br><br>
-                        Typ użytkownika: user<form:radiobutton path="userTypeId" value="1" checked="checked" /> administrator<form:radiobutton path="userTypeId" value="2" checked="checked" /> użytkownik<br><br>
+                        Typ użytkownika: <form:radiobutton path="userTypeId" value="1" checked="checked" /> administrator<form:radiobutton path="userTypeId" value="2" checked="checked" /> użytkownik<br><br>
                         <input type="submit" value="Zarejestruj się" name="submit" />
                     </form:form><br>
                 </div>
