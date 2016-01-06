@@ -7,6 +7,7 @@ package com.projekt.projectztp.controller;
 
 import com.projekt.projectztp.dao.CathegoryDao;
 import com.projekt.projectztp.dao.ProductDao;
+import com.projekt.projectztp.entity.Cathegory;
 import com.projekt.projectztp.entity.Product;
 import com.projekt.projectztp.entity.User;
 import com.projekt.projectztp.formToControllers.ManageProductForm;
@@ -54,10 +55,34 @@ public class ManageProductController {
     
     @RequestMapping("/deleteProduct")
     public String deleteProduct(@ModelAttribute("manageProductForm") @Valid ManageProductForm manageProductForm, BindingResult result){
-        System.out.println(manageProductForm.getProductToDelete());
         Product product = productDao.findByName(manageProductForm.getProductToDelete());
-        System.out.println(product.getName());
         productDao.delete(product);
+        return "redirect:/manageProduct";
+    }
+    
+    @RequestMapping("/addProduct")
+    public String addProduct(@ModelAttribute("manageProductForm") @Valid ManageProductForm manageProductForm, BindingResult result){
+        Product product = new Product();
+        product.setName(manageProductForm.getAddProductForm().getName());
+        product.setPrice(Float.parseFloat(manageProductForm.getAddProductForm().getPrice()));
+        Cathegory cathegory = cathegoryDao.findByName(manageProductForm.getAddProductForm().getCathegoryName());
+        product.setCathegoryId(cathegory);
+        productDao.save(product);
+        return "redirect:/manageProduct";
+    }
+    
+    @RequestMapping("/editProduct")
+    public String editProduct(@ModelAttribute("manageProductForm") @Valid ManageProductForm manageProductForm, BindingResult result){
+        System.out.println(manageProductForm.getEditProductForm().getOldName());
+        System.out.println(manageProductForm.getEditProductForm().getName());
+        System.out.println(manageProductForm.getEditProductForm().getPrice());
+        System.out.println(manageProductForm.getEditProductForm().getCathegoryName());
+        Product product = productDao.findByName(manageProductForm.getEditProductForm().getOldName());
+        product.setName(manageProductForm.getEditProductForm().getName());
+        product.setPrice(Float.parseFloat(manageProductForm.getEditProductForm().getPrice()));
+        Cathegory cathegory = cathegoryDao.findByName(manageProductForm.getEditProductForm().getCathegoryName());
+        product.setCathegoryId(cathegory);
+        productDao.update(product);
         return "redirect:/manageProduct";
     }
 }

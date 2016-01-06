@@ -16,4 +16,5 @@ import java.util.List;
 public interface CathegoryDao extends GenericDao<Cathegory,Short>  {
     
     public List<Cathegory> findAll();
+    public Cathegory findByName(String name);
 }

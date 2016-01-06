@@ -28,6 +28,7 @@ public class JpaProductDao extends GenericJpaDao<Product, Long> implements Produ
         return result;
     }
     
+    @Override
     public Product findByName(String name){
         EntityManager em = getEntityManager();
         TypedQuery<Product> q = em.createNamedQuery("Product.findByName",Product.class);

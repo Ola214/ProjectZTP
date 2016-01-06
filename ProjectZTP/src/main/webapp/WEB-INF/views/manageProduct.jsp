@@ -306,7 +306,21 @@
                         <form:select path="productToDelete" items="${manageProductForm.productList}"/></br></br>
                         <input type="submit" value="OK" name="submit" />
                     </form:form><br>
-                    
+                    <h1>Dodaj produkt</h1>
+                    <form:form action="/ProjectZTP/addProduct" method="POST" modelAttribute="manageProductForm">
+                        <form:input type="text" path="addProductForm.name" value="" placeholder="nazwa"/><br><br>
+                        <form:input type="text" path="addProductForm.price" value="" placeholder="cena"/><br><br>
+                        <form:select path="addProductForm.cathegoryName" items="${manageProductForm.cathegoryList}"/></br></br>
+                        <input type="submit" value="OK" name="submit" />
+                    </form:form><br>
+                    <h1>Edytuj produkt</h1>
+                    <form:form action="/ProjectZTP/editProduct" method="POST" modelAttribute="manageProductForm">
+                        <form:select path="editProductForm.oldName" items="${manageProductForm.productList}"/></br></br>
+                        <form:input type="text" path="editProductForm.name" value="" placeholder="nazwa"/><br><br>
+                        <form:input type="text" path="editProductForm.price" value="" placeholder="cena"/><br><br>
+                        <form:select path="editProductForm.cathegoryName" items="${manageProductForm.cathegoryList}"/></br></br>
+                        <input type="submit" value="OK" name="submit" />
+                    </form:form><br>
                 </div>
                 <div class="socials">
                     <div class="socialdivs">

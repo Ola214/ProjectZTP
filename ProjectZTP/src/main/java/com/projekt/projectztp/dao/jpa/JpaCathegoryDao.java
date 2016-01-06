@@ -27,4 +27,14 @@ public class JpaCathegoryDao extends GenericJpaDao<Cathegory, Short> implements 
         em.close();
         return result;
     }
+    
+    @Override
+    public Cathegory findByName(String name){
+        EntityManager em = getEntityManager();
+        TypedQuery<Cathegory> q = em.createNamedQuery("Cathegory.findByName",Cathegory.class);
+        q.setParameter("name", name);
+        Cathegory result = q.getSingleResult();
+        em.close();
+        return result;
+    }
 }

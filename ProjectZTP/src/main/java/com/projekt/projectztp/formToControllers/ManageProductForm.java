@@ -21,5 +21,6 @@ public class ManageProductForm {
     private List<Product> productList;
     private List<Cathegory> cathegoryList;
     private String productToDelete;
-    
+    private AddProductForm addProductForm;
+    private EditProductForm editProductForm;
 }

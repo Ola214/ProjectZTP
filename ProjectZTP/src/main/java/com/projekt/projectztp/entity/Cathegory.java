@@ -103,7 +103,8 @@ public class Cathegory implements Serializable {
 
     @Override
     public String toString() {
-        return "com.projekt.projectztp.entity.Cathegory[ id=" + id + " ]";
+        return name;
+        //return "com.projekt.projectztp.entity.Cathegory[ id=" + id + " ]";
     }
     
 }
