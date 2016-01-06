@@ -270,7 +270,7 @@
                                 <li><a href="FrontUser">Użytkownikami</a></li>
                                 <li><a href="FrontCathegory">Kategoriami</a></li>
                                 <li><a href="FrontTag">Etykietami</a></li>
-                                <li><a href="FrontProfile">Profilem</a></li>
+                                <li><a href="/ProjectZTP/manageProfile">Profilem</a></li>
                                 <li><a href="FrontQuote">Wpisami</a></li>
                             </ul>
                         </li>

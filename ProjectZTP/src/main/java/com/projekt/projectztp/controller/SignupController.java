@@ -59,7 +59,7 @@ public class SignupController {
         UserType userType;
         UserStatus userStatus;
 
-        if (signupForm.getUserTypeId() == 1) {
+        if (signupForm.getUserTypeId().equals("admin")) {
             
             user = usersFactory.createUser("admin");
             user.additionalStuff(userTypeDao.findByName("admin"),userStatusDao.findByName("new"));

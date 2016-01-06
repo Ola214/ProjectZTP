@@ -5,7 +5,11 @@
  */
 package com.projekt.projectztp.controller;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
  *
@@ -13,5 +17,11 @@ import org.springframework.stereotype.Controller;
  */
 @Controller
 public class LogoutController {
-    
+
+    @RequestMapping("/logout")
+    public String logout(HttpServletRequest request) {
+        HttpSession session = request.getSession();
+        session.setAttribute("User", null);
+        return "redirect:/";
+    }
 }

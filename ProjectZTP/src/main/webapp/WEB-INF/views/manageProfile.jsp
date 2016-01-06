@@ -1,16 +1,14 @@
+
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
-
-
-
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <!DOCTYPE html>
 <html lang="pl">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
         <title>Piekarnia</title>
-
         <style type="text/css">
 
             input[type=text] {
@@ -287,40 +285,23 @@
                     </ol>
                 </div>
                 <div class="content">
-                    <h1>Cennik (kolejnosc wg nazwy)</h1>
-                    <table border="1">
-                        <tr>
-                            <th>Id</td>
-                            <th>Nazwa</td>
-                            <th>Cena</td>
-                            <th>Kategoria</td>
-                        </tr>
-                        <c:forEach var="Product" items="${frontForm.produkty}">
-                            <tr> 
-                                <td>${Product.id}</td>
-                                <td>${Product.name}</td>
-                                <td>${Product.price}</td>
-                                <td>${Product.cathegoryId.name}</td>
-                            </tr>
-                        </c:forEach></table>
-                    </br>
-                    <h1>Cennik (kolejnosc wg ceny)</h1>
-                    <table border="1">
-                        <tr>
-                            <th>Id</td>
-                            <th>Nazwa</td>
-                            <th>Cena</td>
-                            <th>Kategoria</td>
-                        </tr>
-                        <c:forEach var="Product" items="${frontForm.produkty2}">
-                            <tr> 
-                                <td>${Product.id}</td>
-                                <td>${Product.name}</td>
-                                <td>${Product.price}</td>
-                                <td>${Product.cathegoryId.name}</td>
-                            </tr>
-                        </c:forEach></table>
-                    </br>
+                    <br>
+                    <h1>Edytuj konto</h1>
+                    <form:form action="/ProjectZTP/editProfile" method="POST" modelAttribute="userForm">
+                        <form:input type="text" path="name" placeholder="imię"/><br><br>
+                        <form:input type="text" path="surname" placeholder="nazwisko"/><br><br>
+                        <form:input type="text" path="email" placeholder="adres e-mail"/><br><br>
+                        <form:input type="text" path="login" placeholder="login"/><br><br>
+                        <form:input type="text" path="password" placeholder="hasło"/><br><br>
+                        <form:input type="text" path="address" placeholder="adres" /><br><br>
+                        Typ użytkownika: <form:radiobutton path="userTypeId" value="admin" checked="checked" /> administrator<form:radiobutton path="userTypeId" value="normalUser" checked="checked" /> użytkownik<br><br>
+                        <input type="submit" value="Edytuj" name="submit" />
+                    </form:form><br>
+                    <h1>Usuń konto</h1>
+                    <form:form action="/ProjectZTP/deleteProfile" method="POST">
+                        <input type="submit" value="Usuń" name="submit" />
+                    </form:form><br>
+                    
                 </div>
                 <div class="socials">
                     <div class="socialdivs">
@@ -333,6 +314,6 @@
                 </div>
                 <div class="footer">piekarnia.com &copy; 2015 Thank you for your visit;-)</div>
             </div>
-           
+            
     </body>
 </html>

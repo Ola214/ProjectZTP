@@ -272,7 +272,7 @@
                                 <li><a href="FrontUser">Użytkownikami</a></li>
                                 <li><a href="FrontCathegory">Kategoriami</a></li>
                                 <li><a href="FrontTag">Etykietami</a></li>
-                                <li><a href="FrontProfile">Profilem</a></li>
+                                <li><a href="/ProjectZTP/manageProfile">Profilem</a></li>
                                 <li><a href="FrontQuote">Wpisami</a></li>
                             </ul>
                         </li>
@@ -294,7 +294,7 @@
                         <form:input type="text" path="login" value="" placeholder="login"/><br><br>
                         <form:input type="text" path="password" value="" placeholder="hasło"/><br><br>
                         <form:input type="text" path="address" value="" placeholder="address"/><br><br>
-                        Typ użytkownika: <form:radiobutton path="userTypeId" value="1" checked="checked" /> administrator<form:radiobutton path="userTypeId" value="2" checked="checked" /> użytkownik<br><br>
+                        Typ użytkownika: <form:radiobutton path="userTypeId" value="admin" checked="checked" /> administrator<form:radiobutton path="userTypeId" value="normalUser" checked="checked" /> użytkownik<br><br>
                         <input type="submit" value="Zarejestruj się" name="submit" />
                     </form:form><br>
                 </div>
