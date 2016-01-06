@@ -29,24 +29,26 @@ public class Store {
     public Store(List<Product> products) {
         this.products = products;
         
-        productsToName = sortByName(products);
-        productsToPrice = sortByPrice(products);
+        this.productsToName = sortByName(products);
+        this.productsToPrice = sortByPrice(products);
     }
 
     public Iterator<Product> createNameIterator() {
-        return new NameIterator();
+        return new NameIterator(productsToName);
     }
 
     public Iterator<Product> createPriceIterator() {
-        return new PriceIterator();
+        return new PriceIterator(productsToPrice);
     }
 
     class NameIterator implements Iterator<Product> {
 
         int x = 0;
-
-        public NameIterator() {
-             productsToName = sortByName(products);
+        List<Product> productsToName;
+        
+        public NameIterator(List<Product> productsToName) {
+             this.productsToName = productsToName;
+             
         }
 
         @Override
@@ -61,12 +63,14 @@ public class Store {
         @Override
         public Product next() {
             if (hasNext()) {
-               
+                
                 return (Product) productsToName.get(x++);
             } else {
                 throw new NoSuchElementException("There are no elements size = " + productsToName.size());
             }
         }
+        
+        
 
     }
 
@@ -74,8 +78,10 @@ public class Store {
 
         int x = 0;
 
-        public PriceIterator() {
-            productsToPrice = sortByPrice(products);
+        List<Product> productsToPrice;
+        
+        public PriceIterator(List<Product> productsToPrice) {
+             this.productsToPrice = productsToPrice;
         }
 
         @Override
@@ -90,27 +96,32 @@ public class Store {
         @Override
         public Product next() {
             if (hasNext()) {
+                
                 return (Product) productsToPrice.get(x++);
             } else {
                 throw new NoSuchElementException("There are no elements size = " + productsToPrice.size());
             }
         }
+        
+        
 
     }
 
     List<Product> sortByName(List<Product> products) {
         List<Product> productsName = products;
         Product pom;
-        for (int j = 0; j < productsName.size(); j++) {
-            for (int i = j + 1; i < productsName.size(); i++) {
-                if (productsName.get(i).getName().compareTo(productsName.get(j).getName()) < 0) {
-                    Product temp = productsName.get(j);
-                    productsName.set(j, productsName.get(i));
-                    productsName.set(i, temp);
-
+        for (int i = 0; i < productsName.size(); i++) {
+            for (int j = 0; j < productsName.size() - i - 1; j++) //pętla wewnętrzna
+            {
+                
+                if(productsName.get(j).getName().compareTo(productsName.get(j + 1).getName())>0){
+                    pom = productsName.get(j);
+                    productsName.set(j, productsName.get(j + 1));
+                    productsName.set(j + 1, pom);
                 }
             }
         }
+        
         return productsName;
     }
 

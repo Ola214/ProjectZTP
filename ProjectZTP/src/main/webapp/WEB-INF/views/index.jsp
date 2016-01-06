@@ -287,7 +287,7 @@
                     </ol>
                 </div>
                 <div class="content">
-                    <h1>Cennik</h1>
+                    <h1>Cennik (kolejnosc wg nazwy)</h1>
                     <table border="1">
                         <tr>
                             <th>Id</td>
@@ -295,7 +295,24 @@
                             <th>Cena</td>
                             <th>Kategoria</td>
                         </tr>
-                        <c:forEach var="Product" items="${produkty}">
+                        <c:forEach var="Product" items="${frontForm.produkty}">
+                            <tr> 
+                                <td>${Product.id}</td>
+                                <td>${Product.name}</td>
+                                <td>${Product.price}</td>
+                                <td>${Product.cathegoryId.name}</td>
+                            </tr>
+                        </c:forEach></table>
+                    </br>
+                    <h1>Cennik (kolejnosc wg ceny)</h1>
+                    <table border="1">
+                        <tr>
+                            <th>Id</td>
+                            <th>Nazwa</td>
+                            <th>Cena</td>
+                            <th>Kategoria</td>
+                        </tr>
+                        <c:forEach var="Product" items="${frontForm.produkty2}">
                             <tr> 
                                 <td>${Product.id}</td>
                                 <td>${Product.name}</td>
