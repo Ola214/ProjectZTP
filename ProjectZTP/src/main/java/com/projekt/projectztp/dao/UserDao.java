@@ -13,7 +13,13 @@ import java.util.List;
  *
  * @author Olaa
  */
-public interface UserDao extends GenericDao<User,Long>  {
+public interface UserDao extends GenericDao<User, Long> {
+
+    public List<User> findAll();
     
-     public User findByLoginAndPassword(String login, String password);
+    public User findByLogin(String login);
+    
+    public List<User> findAllNormal();
+
+    public User findByLoginAndPassword(String login, String password);
 }

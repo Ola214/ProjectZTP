@@ -1,16 +1,12 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
-
-
-
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <!DOCTYPE html>
 <html lang="pl">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
         <title>Piekarnia</title>
-
         <style type="text/css">
 
             input[type=text] {
@@ -287,40 +283,42 @@
                     </ol>
                 </div>
                 <div class="content">
-                    <h1>Cennik (kolejnosc wg nazwy)</h1>
+                    <br><br>
+                    <h1>Lista użytkowników</h1>
                     <table border="1">
                         <tr>
-                            <th>Id</td>
-                            <th>Nazwa</td>
-                            <th>Cena</td>
-                            <th>Kategoria</td>
+                            <th>Id</th>
+                            <th>Imię</th>
+                            <th>Nazwisko</th>
+                            <th>E-mail</th>
+                            <th>Adres</th>
+                            <th>Login</th>
+                            <th>Status</th>
                         </tr>
-                        <c:forEach var="Product" items="${frontForm.produkty}">
+                        <c:forEach var="user" items="${manageUserForm.userList}">
                             <tr> 
-                                <td>${Product.id}</td>
-                                <td>${Product.name}</td>
-                                <td>${Product.price}</td>
-                                <td>${Product.cathegoryId.name}</td>
+                                <td>${user.id}</td>
+                                <td>${user.name}</td>
+                                <td>${user.surname}</td>
+                                <td>${user.email}</td>
+                                <td>${user.address}</td>
+                                <td>${user.login}</td>
+                                <td>${user.userStatusId.name}</td>
                             </tr>
                         </c:forEach></table>
-                    </br>
-                    <h1>Cennik (kolejnosc wg ceny)</h1>
-                    <table border="1">
-                        <tr>
-                            <th>Id</td>
-                            <th>Nazwa</td>
-                            <th>Cena</td>
-                            <th>Kategoria</td>
-                        </tr>
-                        <c:forEach var="Product" items="${frontForm.produkty2}">
-                            <tr> 
-                                <td>${Product.id}</td>
-                                <td>${Product.name}</td>
-                                <td>${Product.price}</td>
-                                <td>${Product.cathegoryId.name}</td>
-                            </tr>
-                        </c:forEach></table>
-                    </br>
+                    </br><br>
+                    <h1>Usuń użytkownika</h1>
+                    <form:form action="/ProjectZTP/deleteManageUser" method="POST" modelAttribute="manageUserForm">
+                        <form:select path="loginToDelete" items="${manageUserForm.userList}"/></br></br>
+                        <input type="submit" value="OK" name="submit" />
+                    </form:form><br>
+                    <h1>Edytuj użytkownika</h1>
+                    <form:form action="/ProjectZTP/editManageUser" method="POST" modelAttribute="manageUserForm">
+                        <form:select path="loginToEdit" items="${manageUserForm.userList}"/></br></br>
+                        Typ użytkownika: <form:radiobutton path="typeToEdit" value="admin" checked="checked" /> administrator<form:radiobutton path="typeToEdit" value="normalUser" checked="checked" /> użytkownik<br><br>
+                        Status użytkownika: <form:radiobutton path="statusToEdit" value="new" checked="checked" />niezaakceptowany<form:radiobutton path="statusToEdit" value="accepted" checked="checked" /> zaakceptowany<br><br>
+                        <input type="submit" value="OK" name="submit" />
+                    </form:form><br>
                 </div>
                 <div class="socials">
                     <div class="socialdivs">
@@ -333,6 +331,7 @@
                 </div>
                 <div class="footer">piekarnia.com &copy; 2015 Thank you for your visit;-)</div>
             </div>
-           
+            
     </body>
 </html>
+               
