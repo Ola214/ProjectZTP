@@ -34,7 +34,7 @@ public class FrontController {
         Iterator<Product> iterator2;
         List<Product> products = productDao.findAll();
         Store store = new Store(products);
-
+        
         iterator = store.createNameIterator();
         iterator2 = store.createPriceIterator();
         List<Product> produkty = new ArrayList<Product>();
