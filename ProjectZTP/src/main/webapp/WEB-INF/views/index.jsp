@@ -268,7 +268,7 @@
                         </li>
                         <li><a href="#">Zarządzaj</a>
                             <ul>
-                                <li><a href="FrontBook">Książkami</a></li>
+                                <li><a href="/ProjectZTP/manageProduct">Produktami</a></li>
                                 <li><a href="FrontRental">Wypożyczeniami</a></li>
                                 <li><a href="FrontWorker">Pracownikami</a></li>
                                 <li><a href="FrontUser">Użytkownikami</a></li>

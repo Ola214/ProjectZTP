@@ -18,5 +18,6 @@ import org.springframework.stereotype.Repository;
 public interface ProductDao  extends GenericDao<Product,Long>  {
     
     public List<Product> findAll();
+    public Product findByName(String name);
     
 }

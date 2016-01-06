@@ -1,5 +1,3 @@
-
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
@@ -285,18 +283,30 @@
                     </ol>
                 </div>
                 <div class="content">
-                    <br>
-                    <h1>Zarejestruj się!</h1>
-                    <form:form action="/ProjectZTP/postSignup" method="POST" modelAttribute="signupForm">
-                        <form:input type="text" path="name" value="" placeholder="imię"/><br><br>
-                        <form:input type="text" path="surname" value="" placeholder="nazwisko"/><br><br>
-                        <form:input type="text" path="email" value="" placeholder="adres e-mail"/><br><br>
-                        <form:input type="text" path="login" value="" placeholder="login"/><br><br>
-                        <form:input type="text" path="password" value="" placeholder="hasło"/><br><br>
-                        <form:input type="text" path="address" value="" placeholder="address"/><br><br>
-                        Typ użytkownika: <form:radiobutton path="userTypeId" value="1" checked="checked" /> administrator<form:radiobutton path="userTypeId" value="2" checked="checked" /> użytkownik<br><br>
-                        <input type="submit" value="Zarejestruj się" name="submit" />
+                    <br><br>
+                    <h1>Lista produktów</h1>
+                    <table border="1">
+                        <tr>
+                            <th>Id</td>
+                            <th>Nazwa</td>
+                            <th>Cena</td>
+                            <th>Kategoria</td>
+                        </tr>
+                        <c:forEach var="product" items="${manageProductForm.productList}">
+                            <tr> 
+                                <td>${product.id}</td>
+                                <td>${product.name}</td>
+                                <td>${product.price}</td>
+                                <td>${product.cathegoryId.name}</td>
+                            </tr>
+                        </c:forEach></table>
+                    </br><br>
+                    <h1>Usuń produkt</h1>
+                    <form:form action="/ProjectZTP/deleteProduct" method="POST" modelAttribute="manageProductForm">
+                        <form:select path="productToDelete" items="${manageProductForm.productList}"/></br></br>
+                        <input type="submit" value="OK" name="submit" />
                     </form:form><br>
+                    
                 </div>
                 <div class="socials">
                     <div class="socialdivs">
@@ -312,3 +322,4 @@
             
     </body>
 </html>
+               

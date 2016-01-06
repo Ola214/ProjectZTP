@@ -7,6 +7,7 @@ package com.projekt.projectztp.dao;
 
 import com.projekt.projectztp.entity.Cathegory;
 import com.projekt.projectztp.entity.Purchase;
+import java.util.List;
 
 /**
  *
@@ -14,4 +15,5 @@ import com.projekt.projectztp.entity.Purchase;
  */
 public interface CathegoryDao extends GenericDao<Cathegory,Short>  {
     
+    public List<Cathegory> findAll();
 }

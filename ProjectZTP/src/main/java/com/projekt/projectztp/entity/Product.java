@@ -131,7 +131,8 @@ public class Product implements Serializable {
 
     @Override
     public String toString() {
-        return "com.projekt.projectztp.entity.Product[ id=" + id + " ]";
+        //return "com.projekt.projectztp.entity.Product[ id=" + id + " ]";
+        return name;
     }
     
      public static final Comparator<Product> nameComparator = new Comparator<Product>(){
