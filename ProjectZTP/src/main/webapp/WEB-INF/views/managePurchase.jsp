@@ -259,19 +259,15 @@
                         <li><a href="#">Piekarnia</a>
                             <ul>
                                 <li><a href="FrontBin">Kosz</a></li>
-                                <li><a href="FrontArchieve">Archiwum</a></li>
+                                <li><a href="/ProjectZTP/frontArchieve">Archiwum</a></li>
                             </ul>
                         </li>
                         <li><a href="#">Zarządzaj</a>
                             <ul>
                                 <li><a href="/ProjectZTP/manageProduct">Produktami</a></li>
                                 <li><a href="/ProjectZTP/managePurchase">Zamówieniami</a></li>
-                                <li><a href="FrontWorker">Pracownikami</a></li>
                                 <li><a href="/ProjectZTP/manageUser">Użytkownikami</a></li>
-                                <li><a href="FrontCathegory">Kategoriami</a></li>
-                                <li><a href="FrontTag">Etykietami</a></li>
                                 <li><a href="/ProjectZTP/manageProfile">Profilem</a></li>
-                                <li><a href="FrontQuote">Wpisami</a></li>
                             </ul>
                         </li>
                         <li><a href="/ProjectZTP/login">Zaloguj</a>
