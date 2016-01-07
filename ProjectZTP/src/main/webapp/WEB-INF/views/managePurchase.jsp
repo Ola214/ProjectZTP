@@ -240,7 +240,7 @@
                 color: #451717;
             }
 
-            
+
         </style>
     </head>
 
@@ -248,7 +248,7 @@
         <div class="wrapper">
             <div class="header">
                 <div class="logo">
-                   
+
                     <span id="logo2"style="color: #c34f4f">piekarnia</span>.com
                     <div style="clear: both">
                     </div>
@@ -265,7 +265,7 @@
                         <li><a href="#">Zarządzaj</a>
                             <ul>
                                 <li><a href="/ProjectZTP/manageProduct">Produktami</a></li>
-                                <li><a href="FrontRental">Wypożyczeniami</a></li>
+                                <li><a href="/ProjectZTP/managePurchase">Zamówieniami</a></li>
                                 <li><a href="FrontWorker">Pracownikami</a></li>
                                 <li><a href="/ProjectZTP/manageUser">Użytkownikami</a></li>
                                 <li><a href="FrontCathegory">Kategoriami</a></li>
@@ -288,35 +288,39 @@
                     <table border="1">
                         <tr>
                             <th>Id</th>
+                            <th>Login</th>
                             <th>Imię</th>
                             <th>Nazwisko</th>
                             <th>E-mail</th>
                             <th>Adres</th>
-                            <th>Login</th>
-                            <th>Status</th>
+                            <th>Nazwa produktu</th>
+                            <th>Ilość</th>
+                            <th>Cena</th>
+                            <th>Data zaakceptowania zamówienia</th>
                         </tr>
-                        <c:forEach var="user" items="${manageUserForm.userList}">
+                        <c:forEach var="purchaseProduct" items="${managePurchaseForm.purchaseProductList}">
                             <tr> 
-                                <td>${user.id}</td>
-                                <td>${user.name}</td>
-                                <td>${user.surname}</td>
-                                <td>${user.email}</td>
-                                <td>${user.address}</td>
-                                <td>${user.login}</td>
-                                <td>${user.userStatusId.name}</td>
+                                <td>${purchaseProduct.purchaseId.id}</td>
+                                <td>${purchaseProduct.purchaseId.userId.login}</td>
+                                <td>${purchaseProduct.purchaseId.userId.name}</td>
+                                <td>${purchaseProduct.purchaseId.userId.surname}</td>
+                                <td>${purchaseProduct.purchaseId.userId.email}</td>
+                                <td>${purchaseProduct.purchaseId.userId.address}</td>
+                                <td>${purchaseProduct.productId.name}</td>
+                                <td>${purchaseProduct.quantity}</td>
+                                <td>${purchaseProduct.productId.price}</td>
+                                <td>${purchaseProduct.purchaseId.acceptanceDate}</td>
                             </tr>
                         </c:forEach></table>
                     </br><br>
-                    <h1>Usuń użytkownika</h1>
-                    <form:form action="/ProjectZTP/deleteManageUser" method="POST" modelAttribute="manageUserForm">
-                        <form:select path="loginToDelete" items="${manageUserForm.userList}"/></br></br>
+                    <h1>Zaakceptuj zamówienie</h1>
+                    <form:form action="/ProjectZTP/acceptManagePurchase" method="POST" modelAttribute="managePurchaseForm">
+                        <form:select path="purchaseToAccept" items="${managePurchaseForm.purchaseListNull}"/></br></br>
                         <input type="submit" value="OK" name="submit" />
                     </form:form><br>
-                    <h1>Edytuj użytkownika</h1>
-                    <form:form action="/ProjectZTP/editManageUser" method="POST" modelAttribute="manageUserForm">
-                        <form:select path="loginToEdit" items="${manageUserForm.userList}"/></br></br>
-                        Typ użytkownika: <form:radiobutton path="typeToEdit" value="admin" checked="checked" /> administrator<form:radiobutton path="typeToEdit" value="normalUser" checked="checked" /> użytkownik<br><br>
-                        Status użytkownika: <form:radiobutton path="statusToEdit" value="new" checked="checked" />niezaakceptowany<form:radiobutton path="statusToEdit" value="accepted" checked="checked" /> zaakceptowany<br><br>
+                    <h1>Odrzuć zamówienie</h1>
+                    <form:form action="/ProjectZTP/rejectManagePurchase" method="POST" modelAttribute="managePurchaseForm">
+                        <form:select path="purchaseToReject" items="${managePurchaseForm.purchaseListNull}"/></br></br>
                         <input type="submit" value="OK" name="submit" />
                     </form:form><br>
                 </div>
@@ -331,7 +335,6 @@
                 </div>
                 <div class="footer">piekarnia.com &copy; 2015 Thank you for your visit;-)</div>
             </div>
-            
+
     </body>
 </html>
-               

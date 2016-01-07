@@ -9,6 +9,7 @@ import java.util.List;
 import lombok.Getter;
 import lombok.Setter;
 import com.projekt.projectztp.entity.Purchase;
+import com.projekt.projectztp.entity.PurchaseProduct;
 
 
 /**
@@ -18,7 +19,7 @@ import com.projekt.projectztp.entity.Purchase;
 @Getter
 @Setter
 public class ManagePurchaseForm {
-    private List<Purchase> purchaseList;
+    private List<PurchaseProduct> purchaseProductList;
     private List<Purchase> purchaseListNull;
     private Long purchaseToAccept;
     private Long purchaseToReject;

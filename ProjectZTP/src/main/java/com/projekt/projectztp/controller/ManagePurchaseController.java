@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import com.projekt.projectztp.dao.PurchaseDao;
+import com.projekt.projectztp.dao.PurchaseProductDao;
 import com.projekt.projectztp.formToControllers.ManagePurchaseForm;
 import com.projekt.projectztp.entity.User;
 import com.projekt.projectztp.entity.Purchase;
@@ -30,6 +31,9 @@ public class ManagePurchaseController {
     @Autowired
     private PurchaseDao purchaseDao;
     
+    @Autowired
+    private PurchaseProductDao purchaseProductDao;
+    
     @RequestMapping("/managePurchase")
     public String frontManagePurchase(Model model, HttpServletRequest request) {
         HttpSession session = request.getSession();
@@ -40,7 +44,7 @@ public class ManagePurchaseController {
         }
          
         ManagePurchaseForm managePurchaseForm = new ManagePurchaseForm();
-        managePurchaseForm.setPurchaseList(purchaseDao.findAll());
+        managePurchaseForm.setPurchaseProductList(purchaseProductDao.findAll());
         managePurchaseForm.setPurchaseListNull(purchaseDao.findAllNull());
         model.addAttribute("managePurchaseForm", managePurchaseForm);
         return "managePurchase";
