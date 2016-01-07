@@ -33,9 +33,11 @@ import javax.xml.bind.annotation.XmlTransient;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Purchase.findAll", query = "SELECT p FROM Purchase p"),
+    @NamedQuery(name = "Purchase.findAllNull", query = "SELECT p FROM Purchase p WHERE p.acceptanceDate IS NULL"),
     @NamedQuery(name = "Purchase.findById", query = "SELECT p FROM Purchase p WHERE p.id = :id"),
     @NamedQuery(name = "Purchase.findByAcceptanceDate", query = "SELECT p FROM Purchase p WHERE p.acceptanceDate = :acceptanceDate")})
 public class Purchase implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -112,7 +114,8 @@ public class Purchase implements Serializable {
 
     @Override
     public String toString() {
-        return "com.projekt.projectztp.entity.Purchase[ id=" + id + " ]";
+        return id.toString();
+        //return "com.projekt.projectztp.entity.Purchase[ id=" + id + " ]";
     }
-    
+
 }

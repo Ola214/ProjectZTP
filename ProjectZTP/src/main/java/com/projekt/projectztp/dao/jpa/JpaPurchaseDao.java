@@ -19,7 +19,23 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class JpaPurchaseDao  extends GenericJpaDao<Purchase, Long> implements PurchaseDao {
     
+     @Override
+    public List<Purchase> findAll(){
+        EntityManager em = getEntityManager();
+        TypedQuery<Purchase> q = em.createNamedQuery("Purchase.findAll",Purchase.class);
+        List<Purchase> result = q.getResultList();
+        em.close();
+        return result;
+    }
     
+    @Override
+    public List<Purchase> findAllNull(){
+        EntityManager em = getEntityManager();
+        TypedQuery<Purchase> q = em.createNamedQuery("Purchase.findAllNull",Purchase.class);
+        List<Purchase> result = q.getResultList();
+        em.close();
+        return result;
+    }
     /*@Override
     public List<PurchaseDTO> findAllPurchasesForClient(int id_customer)
     {
