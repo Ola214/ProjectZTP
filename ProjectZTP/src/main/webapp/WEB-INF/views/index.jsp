@@ -244,7 +244,7 @@
                 color: #451717;
             }
 
-            
+
         </style>
     </head>
 
@@ -252,7 +252,7 @@
         <div class="wrapper">
             <div class="header">
                 <div class="logo">
-                   
+
                     <span id="logo2"style="color: #c34f4f">piekarnia</span>.com
                     <div style="clear: both">
                     </div>
@@ -329,6 +329,28 @@
                 </div>
                 <div class="footer">piekarnia.com &copy; 2015 Thank you for your visit;-)</div>
             </div>
-           
+            <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+            <script>
+                $(document).ready(function () {
+                    var NavY = $('.nav').offset().top;
+
+                    var stickyNav = function () {
+                        var ScrollY = $(window).scrollTop();
+
+                        if (ScrollY > NavY) {
+                            $('.nav').addClass('sticky');
+                        } else {
+                            $('.nav').removeClass('sticky');
+                        }
+                    };
+
+                    stickyNav();
+
+                    $(window).scroll(function () {
+                        stickyNav();
+                    });
+                });
+
+            </script>
     </body>
 </html>

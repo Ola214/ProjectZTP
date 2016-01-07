@@ -258,7 +258,7 @@
                         <li><a href="/ProjectZTP/">Strona główna</a></li>
                         <li><a href="#">Piekarnia</a>
                             <ul>
-                                <li><a href="FrontBin">Kosz</a></li>
+                                <li><a href="/ProjectZTP/frontBin">Kosz</a></li>
                                 <li><a href="/ProjectZTP/frontArchieve">Archiwum</a></li>
                             </ul>
                         </li>
@@ -311,12 +311,12 @@
                             </tr>
                         </c:forEach></table>
                     </br><br>
-                    <h1>Zaakceptuj zamówienie (podajesz id jakiegokolwiek podzamówienia)</h1>
+                    <h1>Zaakceptuj zamówienie (podaj id jakiegokolwiek podzamówienia)</h1>
                     <form:form action="/ProjectZTP/acceptManagePurchase" method="POST" modelAttribute="managePurchaseForm">
                         <form:select path="purchaseProductToAccept" items="${managePurchaseForm.purchaseProductListNull}"/></br></br>
                         <input type="submit" value="OK" name="submit" />
                     </form:form><br>
-                    <h1>Odrzuć zamówienie (podajesz id jakiegokolwiek podzamówienia)</h1>
+                    <h1>Odrzuć zamówienie (podaj id jakiegokolwiek podzamówienia)</h1>
                     <form:form action="/ProjectZTP/rejectManagePurchase" method="POST" modelAttribute="managePurchaseForm">
                         <form:select path="purchaseProductToReject" items="${managePurchaseForm.purchaseProductListNull}"/></br></br>
                         <input type="submit" value="OK" name="submit" />
@@ -333,6 +333,28 @@
                 </div>
                 <div class="footer">piekarnia.com &copy; 2015 Thank you for your visit;-)</div>
             </div>
+            <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+            <script>
+                $(document).ready(function () {
+                    var NavY = $('.nav').offset().top;
 
+                    var stickyNav = function () {
+                        var ScrollY = $(window).scrollTop();
+
+                        if (ScrollY > NavY) {
+                            $('.nav').addClass('sticky');
+                        } else {
+                            $('.nav').removeClass('sticky');
+                        }
+                    };
+
+                    stickyNav();
+
+                    $(window).scroll(function () {
+                        stickyNav();
+                    });
+                });
+
+            </script>
     </body>
 </html>

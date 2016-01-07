@@ -258,7 +258,7 @@
                         <li><a href="/ProjectZTP/">Strona główna</a></li>
                         <li><a href="#">Piekarnia</a>
                             <ul>
-                                <li><a href="FrontBin">Kosz</a></li>
+                                <li><a href="/ProjectZTP/frontBin">Kosz</a></li>
                                 <li><a href="/ProjectZTP/frontArchieve">Archiwum</a></li>
                             </ul>
                         </li>
@@ -327,7 +327,29 @@
                 </div>
                 <div class="footer">piekarnia.com &copy; 2015 Thank you for your visit;-)</div>
             </div>
-            
+            <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+            <script>
+                $(document).ready(function () {
+                    var NavY = $('.nav').offset().top;
+
+                    var stickyNav = function () {
+                        var ScrollY = $(window).scrollTop();
+
+                        if (ScrollY > NavY) {
+                            $('.nav').addClass('sticky');
+                        } else {
+                            $('.nav').removeClass('sticky');
+                        }
+                    };
+
+                    stickyNav();
+
+                    $(window).scroll(function () {
+                        stickyNav();
+                    });
+                });
+
+            </script>
     </body>
 </html>
                
