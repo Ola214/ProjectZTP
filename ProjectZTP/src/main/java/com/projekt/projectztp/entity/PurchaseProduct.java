@@ -34,6 +34,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "PurchaseProduct.findAll", query = "SELECT p FROM PurchaseProduct p"),
     @NamedQuery(name = "PurchaseProduct.findByLogin", query = "SELECT p FROM PurchaseProduct p WHERE p.purchaseId.userId.login = :login"),
     @NamedQuery(name = "PurchaseProduct.findAllNull", query = "SELECT p FROM PurchaseProduct p WHERE p.acceptanceDate IS NULL"),
+    @NamedQuery(name = "PurchaseProduct.findAllNullForUser", query = "SELECT p FROM PurchaseProduct p WHERE p.acceptanceDate IS NULL AND p.purchaseId.userId.login = :login"),
     @NamedQuery(name = "PurchaseProduct.findById", query = "SELECT p FROM PurchaseProduct p WHERE p.id = :id"),
     @NamedQuery(name = "PurchaseProduct.findByQuantity", query = "SELECT p FROM PurchaseProduct p WHERE p.quantity = :quantity")})
 public class PurchaseProduct implements Serializable {

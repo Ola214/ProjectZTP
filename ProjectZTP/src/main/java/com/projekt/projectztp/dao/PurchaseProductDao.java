@@ -16,4 +16,5 @@ public interface PurchaseProductDao extends GenericDao<PurchaseProduct,Long>  {
     public List<PurchaseProduct> findByLogin(String login);
     public List<PurchaseProduct> findAll();
     public List<PurchaseProduct> findAllNull();
+    public List<PurchaseProduct> findAllNullForUser(String login);
 }

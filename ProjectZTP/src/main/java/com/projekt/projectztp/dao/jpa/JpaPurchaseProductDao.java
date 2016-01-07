@@ -19,6 +19,15 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class JpaPurchaseProductDao extends GenericJpaDao<PurchaseProduct, Long> implements PurchaseProductDao {
 
+    public List<PurchaseProduct> findAllNullForUser(String login){
+        EntityManager em = getEntityManager();
+        TypedQuery<PurchaseProduct> q = em.createNamedQuery("PurchaseProduct.findAllNullForUser", PurchaseProduct.class);
+        q.setParameter("login", login);
+        List<PurchaseProduct> result = q.getResultList();
+        em.close();
+        return result;
+    }
+    
     @Override
     public List<PurchaseProduct> findByLogin(String login) {
         EntityManager em = getEntityManager();

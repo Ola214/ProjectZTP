@@ -19,6 +19,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class JpaPurchaseDao  extends GenericJpaDao<Purchase, Long> implements PurchaseDao {
     
+    
      @Override
     public List<Purchase> findAll(){
         EntityManager em = getEntityManager();
@@ -27,6 +28,8 @@ public class JpaPurchaseDao  extends GenericJpaDao<Purchase, Long> implements Pu
         em.close();
         return result;
     }
+    
+    
     
     
     /*@Override
