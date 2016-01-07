@@ -48,7 +48,7 @@ public class Store {
         
         public NameIterator(List<Product> productsToName) {
              this.productsToName = productsToName;
-             
+             this.productsToName = sortByName(productsToName);
         }
 
         @Override
@@ -82,6 +82,7 @@ public class Store {
         
         public PriceIterator(List<Product> productsToPrice) {
              this.productsToPrice = productsToPrice;
+              this.productsToPrice = sortByPrice(productsToPrice);
         }
 
         @Override

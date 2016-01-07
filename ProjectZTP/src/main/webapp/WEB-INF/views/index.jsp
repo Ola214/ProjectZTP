@@ -262,7 +262,7 @@
                         <li><a href="/ProjectZTP/">Strona główna</a></li>
                         <li><a href="#">Piekarnia</a>
                             <ul>
-                                <li><a href="FrontBin">Kosz</a></li>
+                                <li><a href="/ProjectZTP/frontBin">Kosz</a></li>
                                 <li><a href="/ProjectZTP/frontArchieve">Archiwum</a></li>
                             </ul>
                         </li>

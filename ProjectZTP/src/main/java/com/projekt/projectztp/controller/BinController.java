@@ -38,27 +38,27 @@ public class BinController {
         binForm.setUser(user);
         binForm.setProductList(productDao.findAllNormal());
         binForm.setExtraList(productDao.findAllExtra());
-        
+        model.addAttribute("binForm", binForm);
         return "bin";
     }
     
     @RequestMapping("/addPurchaseBin")
     public String addPurchaseBin(Model model, HttpServletRequest request){
-        
+         return "redirect:/";
     }
     
     @RequestMapping("/editPurchaseBin")
     public String editPurchaseBin(Model model, HttpServletRequest request){
-        
+         return "redirect:/";
     }
     
     @RequestMapping("/deletePurchaseBin")
     public String deletePurchaseBin(Model model, HttpServletRequest request){
-        
+         return "redirect:/";
     }
     
     @RequestMapping("/approveBin")
     public String approveBin(Model model, HttpServletRequest request){
-        
+         return "redirect:/";
     }
 }

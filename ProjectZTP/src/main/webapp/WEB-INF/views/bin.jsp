@@ -321,7 +321,7 @@
                             <th>Ilość</th>
                             <th>Cena</th>
                         </tr>
-                        <c:forEach var="purchaseProduct" items="${binForm.purchaseProduct}">
+                        <c:forEach var="purchaseProduct" items="${binForm.purchaseProductAddedList}">
                             <tr> 
                                 <td>${purchaseProduct.purchaseId.id}</td>
                                 <td>${purchaseProduct.id}</td>
@@ -333,22 +333,27 @@
                     </table><br>
                     <h1>Zatwierdź zamówienie</h1>
                     <form:form action="/ProjectZTP/approveBin" method="POST" modelAttribute="binForm">
-                        <input type="submit" value="OK" name="submit" />
+                        <input type="submit" value="Zatwierdź" name="submit" />
                     </form:form><br>
                     <h1>Usuń zamówienie</h1>
                     <form:form action="/ProjectZTP/deletePurchaseBin" method="POST" modelAttribute="binForm">
                         <form:select path="purchaseId" items="${binForm.purchaseAddedList}"/></br></br>
-                        <input type="submit" value="OK" name="submit" />
+                        <input type="submit" value="Usuń" name="submit" />
                     </form:form><br>
                     <h1>Edytuj zamówienie</h1>
-                    <form:form action="/ProjectZTP/deletePurchaseBin" method="POST" modelAttribute="binForm">
-                        <form:select path="purchaseId" items="${binForm.purchaseAddedList}"/></br></br>
-                        <input type="submit" value="OK" name="submit" />
+                    <form:form action="/ProjectZTP/editPurchaseBin" method="POST" modelAttribute="binForm">
+                        Id: <form:select path="purchaseId" items="${binForm.purchaseAddedList}"/></br></br>
+                        <form:select path="productName" items="${binForm.productList}"/></br></br>
+                        Extra: <form:radiobutton path="extraName" value="Chocolate" checked="checked" /> czekolada<form:radiobutton path="extraName" value="Powdered sugar" checked="checked" /> cukier puder<form:radiobutton path="extraName" value="brak" checked="checked" /> brak<br><br>
+                        <form:input type="text" path="quantity" value="" placeholder="ilość"/><br><br>
+                        <input type="submit" value="Edytuj" name="submit" />
                     </form:form><br>
                     <h1>Dodaj zamówienie</h1>
-                    <form:form action="/ProjectZTP/deletePurchaseBin" method="POST" modelAttribute="binForm">
-                        <form:select path="purchaseId" items="${binForm.purchaseAddedList}"/></br></br>
-                        <input type="submit" value="OK" name="submit" />
+                    <form:form action="/ProjectZTP/addPurchaseBin" method="POST" modelAttribute="binForm">
+                        <form:select path="productName" items="${binForm.productList}"/></br></br>
+                        Extra: <form:radiobutton path="extraName" value="Chocolate" checked="checked" /> czekolada<form:radiobutton path="extraName" value="Powdered sugar" checked="checked" /> cukier puder<form:radiobutton path="extraName" value="brak" checked="checked" /> brak<br><br>
+                        <form:input type="text" path="quantity" value="" placeholder="ilość"/><br><br>
+                        <input type="submit" value="Dodaj" name="submit" />
                     </form:form><br>
                 </div>
                 <div class="socials">
