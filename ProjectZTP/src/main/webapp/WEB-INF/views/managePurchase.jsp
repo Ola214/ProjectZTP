@@ -311,12 +311,12 @@
                             </tr>
                         </c:forEach></table>
                     </br><br>
-                    <h1>Zaakceptuj zamówienie</h1>
+                    <h1>Zaakceptuj zamówienie (podajesz id jakiegokolwiek podzamówienia)</h1>
                     <form:form action="/ProjectZTP/acceptManagePurchase" method="POST" modelAttribute="managePurchaseForm">
                         <form:select path="purchaseProductToAccept" items="${managePurchaseForm.purchaseProductListNull}"/></br></br>
                         <input type="submit" value="OK" name="submit" />
                     </form:form><br>
-                    <h1>Odrzuć zamówienie</h1>
+                    <h1>Odrzuć zamówienie (podajesz id jakiegokolwiek podzamówienia)</h1>
                     <form:form action="/ProjectZTP/rejectManagePurchase" method="POST" modelAttribute="managePurchaseForm">
                         <form:select path="purchaseProductToReject" items="${managePurchaseForm.purchaseProductListNull}"/></br></br>
                         <input type="submit" value="OK" name="submit" />

@@ -53,15 +53,21 @@ public class ManagePurchaseController {
     
     @RequestMapping("/rejectManagePurchase")
     public String rejectManagePurchase(@ModelAttribute("managePurchaseForm") @Valid ManagePurchaseForm managePurchaseForm, BindingResult result){
-        purchaseProductDao.delete(purchaseProductDao.findById(managePurchaseForm.getPurchaseProductToReject()));
+        PurchaseProduct purchaseProductToReject = purchaseProductDao.findById(managePurchaseForm.getPurchaseProductToReject());
+        Purchase purchase = purchaseProductToReject.getPurchaseId();
+        purchaseDao.delete(purchase);
         return "redirect:/managePurchase";
     }
     
     @RequestMapping("/acceptManagePurchase")
     public String acceptManagePurchase(@ModelAttribute("managePurchaseForm") @Valid ManagePurchaseForm managePurchaseForm, BindingResult result){
         PurchaseProduct purchaseProduct = purchaseProductDao.findById(managePurchaseForm.getPurchaseProductToAccept());
-        purchaseProduct.setAcceptanceDate(new Date());
-        purchaseProductDao.update(purchaseProduct);
+        Purchase purchase = purchaseProduct.getPurchaseId();
+        for(PurchaseProduct p: purchase.getPurchaseProductList()){
+            p.setAcceptanceDate(new Date());
+            purchaseProductDao.update(p);
+        }
+        
         return "redirect:/managePurchase";
     }
 }
