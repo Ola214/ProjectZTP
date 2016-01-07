@@ -33,9 +33,8 @@ import javax.xml.bind.annotation.XmlTransient;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Purchase.findAll", query = "SELECT p FROM Purchase p"),
-    @NamedQuery(name = "Purchase.findAllNull", query = "SELECT p FROM Purchase p WHERE p.acceptanceDate IS NULL"),
-    @NamedQuery(name = "Purchase.findById", query = "SELECT p FROM Purchase p WHERE p.id = :id"),
-    @NamedQuery(name = "Purchase.findByAcceptanceDate", query = "SELECT p FROM Purchase p WHERE p.acceptanceDate = :acceptanceDate")})
+    
+    @NamedQuery(name = "Purchase.findById", query = "SELECT p FROM Purchase p WHERE p.id = :id")})
 public class Purchase implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -43,9 +42,7 @@ public class Purchase implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     private Long id;
-    @Column(name = "ACCEPTANCE_DATE")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date acceptanceDate;
+    
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "purchaseId")
     private List<PurchaseProduct> purchaseProductList;
     @JoinColumn(name = "USER_ID", referencedColumnName = "ID")
@@ -67,13 +64,7 @@ public class Purchase implements Serializable {
         this.id = id;
     }
 
-    public Date getAcceptanceDate() {
-        return acceptanceDate;
-    }
-
-    public void setAcceptanceDate(Date acceptanceDate) {
-        this.acceptanceDate = acceptanceDate;
-    }
+    
 
     @XmlTransient
     public List<PurchaseProduct> getPurchaseProductList() {

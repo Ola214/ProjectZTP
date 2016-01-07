@@ -28,14 +28,7 @@ public class JpaPurchaseDao  extends GenericJpaDao<Purchase, Long> implements Pu
         return result;
     }
     
-    @Override
-    public List<Purchase> findAllNull(){
-        EntityManager em = getEntityManager();
-        TypedQuery<Purchase> q = em.createNamedQuery("Purchase.findAllNull",Purchase.class);
-        List<Purchase> result = q.getResultList();
-        em.close();
-        return result;
-    }
+    
     /*@Override
     public List<PurchaseDTO> findAllPurchasesForClient(int id_customer)
     {

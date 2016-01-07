@@ -6,7 +6,9 @@
 package com.projekt.projectztp.entity;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.Basic;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,6 +18,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -28,6 +32,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "PurchaseProduct.findAll", query = "SELECT p FROM PurchaseProduct p"),
+    @NamedQuery(name = "PurchaseProduct.findAllNull", query = "SELECT p FROM PurchaseProduct p WHERE p.acceptanceDate IS NULL"),
     @NamedQuery(name = "PurchaseProduct.findById", query = "SELECT p FROM PurchaseProduct p WHERE p.id = :id"),
     @NamedQuery(name = "PurchaseProduct.findByQuantity", query = "SELECT p FROM PurchaseProduct p WHERE p.quantity = :quantity")})
 public class PurchaseProduct implements Serializable {
@@ -45,6 +50,9 @@ public class PurchaseProduct implements Serializable {
     @JoinColumn(name = "PURCHASE_ID", referencedColumnName = "ID")
     @ManyToOne(optional = false)
     private Purchase purchaseId;
+    @Column(name = "ACCEPTANCE_DATE")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date acceptanceDate;
 
     public PurchaseProduct() {
     }
@@ -109,10 +117,19 @@ public class PurchaseProduct implements Serializable {
         }
         return true;
     }
+    
+    public Date getAcceptanceDate() {
+        return acceptanceDate;
+    }
+
+    public void setAcceptanceDate(Date acceptanceDate) {
+        this.acceptanceDate = acceptanceDate;
+    }
 
     @Override
     public String toString() {
-        return "com.projekt.projectztp.entity.PurchaseProduct[ id=" + id + " ]";
+        return id.toString();
+        //return "com.projekt.projectztp.entity.PurchaseProduct[ id=" + id + " ]";
     }
     
 }

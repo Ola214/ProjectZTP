@@ -284,10 +284,11 @@
                 </div>
                 <div class="content">
                     <br><br>
-                    <h1>Lista użytkowników</h1>
+                    <h1>Lista zamówień</h1>
                     <table border="1">
                         <tr>
                             <th>Id</th>
+                            <th>Id podzamówienia</th>
                             <th>Login</th>
                             <th>Imię</th>
                             <th>Nazwisko</th>
@@ -301,6 +302,7 @@
                         <c:forEach var="purchaseProduct" items="${managePurchaseForm.purchaseProductList}">
                             <tr> 
                                 <td>${purchaseProduct.purchaseId.id}</td>
+                                <td>${purchaseProduct.id}</td>
                                 <td>${purchaseProduct.purchaseId.userId.login}</td>
                                 <td>${purchaseProduct.purchaseId.userId.name}</td>
                                 <td>${purchaseProduct.purchaseId.userId.surname}</td>
@@ -309,18 +311,18 @@
                                 <td>${purchaseProduct.productId.name}</td>
                                 <td>${purchaseProduct.quantity}</td>
                                 <td>${purchaseProduct.productId.price}</td>
-                                <td>${purchaseProduct.purchaseId.acceptanceDate}</td>
+                                <td>${purchaseProduct.acceptanceDate}</td>
                             </tr>
                         </c:forEach></table>
                     </br><br>
                     <h1>Zaakceptuj zamówienie</h1>
                     <form:form action="/ProjectZTP/acceptManagePurchase" method="POST" modelAttribute="managePurchaseForm">
-                        <form:select path="purchaseToAccept" items="${managePurchaseForm.purchaseListNull}"/></br></br>
+                        <form:select path="purchaseProductToAccept" items="${managePurchaseForm.purchaseProductListNull}"/></br></br>
                         <input type="submit" value="OK" name="submit" />
                     </form:form><br>
                     <h1>Odrzuć zamówienie</h1>
                     <form:form action="/ProjectZTP/rejectManagePurchase" method="POST" modelAttribute="managePurchaseForm">
-                        <form:select path="purchaseToReject" items="${managePurchaseForm.purchaseListNull}"/></br></br>
+                        <form:select path="purchaseProductToReject" items="${managePurchaseForm.purchaseProductListNull}"/></br></br>
                         <input type="submit" value="OK" name="submit" />
                     </form:form><br>
                 </div>

@@ -20,7 +20,7 @@ import com.projekt.projectztp.entity.PurchaseProduct;
 @Setter
 public class ManagePurchaseForm {
     private List<PurchaseProduct> purchaseProductList;
-    private List<Purchase> purchaseListNull;
-    private Long purchaseToAccept;
-    private Long purchaseToReject;
+    private List<PurchaseProduct> purchaseProductListNull;
+    private Long purchaseProductToAccept;
+    private Long purchaseProductToReject;
 }

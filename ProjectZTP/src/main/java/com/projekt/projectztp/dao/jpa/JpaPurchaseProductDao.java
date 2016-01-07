@@ -27,4 +27,13 @@ public class JpaPurchaseProductDao extends GenericJpaDao<PurchaseProduct, Long> 
         em.close();
         return result;
     }
+    
+    @Override
+    public List<PurchaseProduct> findAllNull(){
+        EntityManager em = getEntityManager();
+        TypedQuery<PurchaseProduct> q = em.createNamedQuery("PurchaseProduct.findAllNull",PurchaseProduct.class);
+        List<PurchaseProduct> result = q.getResultList();
+        em.close();
+        return result;
+    }
 }

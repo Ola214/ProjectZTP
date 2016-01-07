@@ -14,4 +14,5 @@ import java.util.List;
  */
 public interface PurchaseProductDao extends GenericDao<PurchaseProduct,Long>  {
     public List<PurchaseProduct> findAll();
+    public List<PurchaseProduct> findAllNull();
 }

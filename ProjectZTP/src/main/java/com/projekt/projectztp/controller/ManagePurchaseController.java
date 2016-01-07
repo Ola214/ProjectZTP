@@ -14,6 +14,7 @@ import com.projekt.projectztp.dao.PurchaseProductDao;
 import com.projekt.projectztp.formToControllers.ManagePurchaseForm;
 import com.projekt.projectztp.entity.User;
 import com.projekt.projectztp.entity.Purchase;
+import com.projekt.projectztp.entity.PurchaseProduct;
 import java.util.Date;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -45,22 +46,22 @@ public class ManagePurchaseController {
          
         ManagePurchaseForm managePurchaseForm = new ManagePurchaseForm();
         managePurchaseForm.setPurchaseProductList(purchaseProductDao.findAll());
-        managePurchaseForm.setPurchaseListNull(purchaseDao.findAllNull());
+        managePurchaseForm.setPurchaseProductListNull(purchaseProductDao.findAllNull());
         model.addAttribute("managePurchaseForm", managePurchaseForm);
         return "managePurchase";
     }
     
     @RequestMapping("/rejectManagePurchase")
     public String rejectManagePurchase(@ModelAttribute("managePurchaseForm") @Valid ManagePurchaseForm managePurchaseForm, BindingResult result){
-        purchaseDao.delete(purchaseDao.findById(managePurchaseForm.getPurchaseToReject()));
+        purchaseProductDao.delete(purchaseProductDao.findById(managePurchaseForm.getPurchaseProductToReject()));
         return "redirect:/managePurchase";
     }
     
     @RequestMapping("/acceptManagePurchase")
     public String acceptManagePurchase(@ModelAttribute("managePurchaseForm") @Valid ManagePurchaseForm managePurchaseForm, BindingResult result){
-        Purchase purchase = purchaseDao.findById(managePurchaseForm.getPurchaseToAccept());
-        purchase.setAcceptanceDate(new Date());
-        purchaseDao.update(purchase);
+        PurchaseProduct purchaseProduct = purchaseProductDao.findById(managePurchaseForm.getPurchaseProductToAccept());
+        purchaseProduct.setAcceptanceDate(new Date());
+        purchaseProductDao.update(purchaseProduct);
         return "redirect:/managePurchase";
     }
 }
