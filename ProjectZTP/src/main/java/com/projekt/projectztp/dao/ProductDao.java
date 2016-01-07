@@ -19,5 +19,6 @@ public interface ProductDao  extends GenericDao<Product,Long>  {
     
     public List<Product> findAll();
     public Product findByName(String name);
-    
+    public List<Product> findAllNormal();
+    public List<Product> findAllExtra();
 }

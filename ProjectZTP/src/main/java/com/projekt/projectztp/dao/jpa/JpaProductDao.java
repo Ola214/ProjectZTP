@@ -20,6 +20,24 @@ import org.springframework.stereotype.Repository;
 public class JpaProductDao extends GenericJpaDao<Product, Long> implements ProductDao{
     
     @Override
+    public List<Product> findAllNormal(){
+        EntityManager em = getEntityManager();
+        TypedQuery<Product> q = em.createNamedQuery("Product.findAllNormal",Product.class);
+        List<Product> result = q.getResultList();
+        em.close();
+        return result;
+    }
+    
+    @Override
+    public List<Product> findAllExtra(){
+        EntityManager em = getEntityManager();
+        TypedQuery<Product> q = em.createNamedQuery("Product.findAllExtra",Product.class);
+        List<Product> result = q.getResultList();
+        em.close();
+        return result;
+    }
+    
+    @Override
     public List<Product> findAll(){
         EntityManager em = getEntityManager();
         TypedQuery<Product> q = em.createNamedQuery("Product.findAll",Product.class);
