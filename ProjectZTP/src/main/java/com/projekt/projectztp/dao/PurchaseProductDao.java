@@ -13,6 +13,7 @@ import java.util.List;
  * @author Olaa
  */
 public interface PurchaseProductDao extends GenericDao<PurchaseProduct,Long>  {
+    public List<PurchaseProduct> findAllForPurchaseId(Long purchaseId);
     public List<PurchaseProduct> findByLogin(String login);
     public List<PurchaseProduct> findAll();
     public List<PurchaseProduct> findAllNull();

@@ -32,6 +32,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "PurchaseProduct.findAll", query = "SELECT p FROM PurchaseProduct p"),
+    @NamedQuery(name = "PurchaseProduct.findAllForPurchaseId", query = "SELECT p FROM PurchaseProduct p WHERE p.purchaseId.id = :purchaseId"),
     @NamedQuery(name = "PurchaseProduct.findByLogin", query = "SELECT p FROM PurchaseProduct p WHERE p.purchaseId.userId.login = :login"),
     @NamedQuery(name = "PurchaseProduct.findAllNull", query = "SELECT p FROM PurchaseProduct p WHERE p.acceptanceDate IS NULL"),
     @NamedQuery(name = "PurchaseProduct.findAllNullForUser", query = "SELECT p FROM PurchaseProduct p WHERE p.acceptanceDate IS NULL AND p.purchaseId.userId.login = :login"),

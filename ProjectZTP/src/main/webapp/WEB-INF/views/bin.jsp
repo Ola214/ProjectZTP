@@ -336,7 +336,7 @@
                         <tr>
                             <th>Id</th>
                             <th>Nazwa</th>
-                            <th>Cena</th>
+                            <th>Cena jednostkowa</th>
                             <th>Ilość</th>
                         </tr>
                         <c:forEach var="iproduct" items="${sessionScope.iproductList}">

@@ -135,10 +135,6 @@ public class BinController {
 
             }
         }
-        System.out.println(iproduct.getId());
-        System.out.println(iproduct.about());
-        System.out.println(iproduct.price());
-        System.out.println(iproduct.quantity());
         List<IProduct> iproductList = (List<IProduct>)session.getAttribute("iproductList");
         if (iproductList == null) {
             iproductList = new ArrayList<IProduct>();
@@ -159,11 +155,28 @@ public class BinController {
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("User");
 
+        List<IProduct> iproductList = (List<IProduct>) session.getAttribute("iproductList");
+        IProduct iproductToRemove = null;
+        if (iproductList != null) {
+            for (IProduct iproduct : iproductList) {
+                if (iproduct.getId().toString().equals(binForm.getPurchaseId())) {
+                    iproductToRemove = iproduct;
+                    
+                }   
+            }
+            if(iproductToRemove != null){
+                    iproductList.remove(iproductToRemove);
+                }
+        }
+       session.setAttribute("iproductList", iproductList);
+        
         Purchase purchase = purchaseDao.findById(Long.parseLong(binForm.getPurchaseId()));
-        List<PurchaseProduct> purchaseProduct3 = purchase.getPurchaseProductList();
-        for (PurchaseProduct po : purchaseProduct3) {
+        //List<PurchaseProduct> purchaseProduct3 = purchase.getPurchaseProductList();//tu size=0 za drugim razem i pozostalymi;/
+       List<PurchaseProduct> purchaseProduct3 = purchaseProductDao.findAllForPurchaseId(purchase.getId());
+         for (PurchaseProduct po : purchaseProduct3) {
             purchaseProductDao.delete(po);
         }
+        
 
         purchase.setPurchaseProductList(null);
 
@@ -184,6 +197,41 @@ public class BinController {
         normal.setPurchaseId(purchase);
         purchaseProductDao.save(normal);
         purchaseDao.update(purchase);
+        
+        IProduct iproduct;
+        if (extra == null) {
+            if (normal.getProductId().getCathegoryId().getName().equals("Cookies")) {
+                iproduct = new Cookies(normal.getProductId(), normal);
+            } else {
+                iproduct = new Cake(normal.getProductId(), normal);
+            }
+        } else {
+            if (extra.getProductId().getName().equals("Chocolate")) {
+                if (normal.getProductId().getCathegoryId().getName().equals("Cookies")) {
+                    iproduct = new Chocolate(new Cookies(normal.getProductId(), normal), extra.getProductId());
+                } else {
+                    iproduct = new Chocolate(new Cake(normal.getProductId(), normal), extra.getProductId());
+                }
+
+            } else {
+                if (normal.getProductId().getCathegoryId().getName().equals("Cookies")) {
+                    iproduct = new PowderedSugar(new Cookies(normal.getProductId(), normal), extra.getProductId());
+                } else {
+                    iproduct = new PowderedSugar(new Cake(normal.getProductId(), normal), extra.getProductId());
+                }
+
+            }
+        }
+        List<IProduct> iproductList2 = (List<IProduct>)session.getAttribute("iproductList");
+        if (iproductList2 == null) {
+            iproductList2 = new ArrayList<IProduct>();
+            iproductList2.add(iproduct);
+            session.setAttribute("iproductList", iproductList2);
+        } else {
+            
+            iproductList2.add(iproduct);
+           session.setAttribute("iproductList", iproductList2);
+        }
 
         model.addAttribute("binForm", binForm);
         return "redirect:/frontBin";
@@ -199,15 +247,8 @@ public class BinController {
         if (iproductList != null) {
             for (IProduct iproduct : iproductList) {
                 if (iproduct.getId().toString().equals(binForm.getPurchaseId())) {
-                    System.out.println(iproduct.getId());
-                    System.out.println(iproduct.about());
-                    System.out.println(iproduct.price());
-                    System.out.println(iproduct.quantity());
                     iproductToRemove = iproduct;
-                    
                 }
-                
-                
             }
             if(iproductToRemove != null){
                     iproductList.remove(iproductToRemove);

@@ -19,6 +19,15 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class JpaPurchaseProductDao extends GenericJpaDao<PurchaseProduct, Long> implements PurchaseProductDao {
 
+    public List<PurchaseProduct> findAllForPurchaseId(Long purchaseId){
+        EntityManager em = getEntityManager();
+        TypedQuery<PurchaseProduct> q = em.createNamedQuery("PurchaseProduct.findAllForPurchaseId", PurchaseProduct.class);
+        q.setParameter("purchaseId", purchaseId);
+        List<PurchaseProduct> result = q.getResultList();
+        em.close();
+        return result;
+    }
+    
     public List<PurchaseProduct> findAllNullForUser(String login){
         EntityManager em = getEntityManager();
         TypedQuery<PurchaseProduct> q = em.createNamedQuery("PurchaseProduct.findAllNullForUser", PurchaseProduct.class);
