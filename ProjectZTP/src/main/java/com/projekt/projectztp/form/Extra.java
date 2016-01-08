@@ -9,25 +9,8 @@ package com.projekt.projectztp.form;
  *
  * @author Olaa
  */
-public class Extra implements IProduct{
+public abstract class Extra extends IProduct{
 
-    private Long id = null; 
-    private String name = null;
-    private float price = 0;
-    
-    @Override
-    public void add() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void delete() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void edit() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    public abstract String about();
     
 }

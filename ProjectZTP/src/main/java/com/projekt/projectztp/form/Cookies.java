@@ -5,29 +5,53 @@
  */
 package com.projekt.projectztp.form;
 
+import com.projekt.projectztp.entity.Product;
+import com.projekt.projectztp.entity.PurchaseProduct;
+import lombok.Getter;
+import lombok.Setter;
+
 /**
  *
  * @author Olaa
  */
-public class Cookies implements IProduct{
+@Getter
+@Setter
+public class Cookies extends IProduct{
 
-    private Long id = null; 
-    private String name = null;
-    private float price = 0;
+    private Product product;
+    private PurchaseProduct purchaseProduct;
+    Long id;
+    
+    String name;
+    
+    float price;
+    
+    long quantity;
+    
+    public Cookies(Product product, PurchaseProduct purchaseProduct){
+        name = "Cookies";
+        price = product.getPrice();
+        quantity = purchaseProduct.getQuantity();
+        id = purchaseProduct.getPurchaseId().getId();
+        this.product = product;
+        this.purchaseProduct = purchaseProduct;
+    }
+    
+    public float price(){
+        return product.getPrice();
+    }
+    
+    public long quantity(){
+        return purchaseProduct.getQuantity();
+    }
+    
+    public Long getId(){
+        return id;
+    }
     
     @Override
-    public void add() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void delete() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void edit() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public String about() {
+        return "Cookies";
     }
     
 }

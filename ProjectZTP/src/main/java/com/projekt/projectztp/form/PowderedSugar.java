@@ -5,32 +5,54 @@
  */
 package com.projekt.projectztp.form;
 
+import com.projekt.projectztp.entity.Product;
+import lombok.Getter;
+import lombok.Setter;
+
 /**
  *
  * @author Olaa
  */
+@Getter
+@Setter
 public class PowderedSugar extends Extra{
+
+    private IProduct iproduct;
+    private Product product;
+    Long id;
+    
+    String name;
+    
+    float price;
+    
+    long quantity;
+    
+    public PowderedSugar(IProduct iproduct, Product product){
+        price = iproduct.price() + product.getPrice();
+        name = iproduct.about() + " + Powdered sugar";
+        quantity = iproduct.quantity();
+        id = iproduct.getId();
+        this.iproduct = iproduct;
+        this.product = product;
+    }
+    
     
     @Override
-    public void add() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public String about() {
+        return iproduct.about() + " + Powdered sugar";
     }
 
     @Override
-    public void delete() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public float price() {
+        return iproduct.price() + product.getPrice();
     }
 
     @Override
-    public void edit() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public long quantity() {
+        return iproduct.quantity();
     }
     
-    public void getDoubledExtra(){
-        
-    }
-    
-    public void getExtra(){
-        
+    public Long getId(){
+        return id;
     }
 }

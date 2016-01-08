@@ -24,6 +24,7 @@ public class BinForm {
     private User user;
     private List<Product> productList;
     private List<Product> extraList;
+    private List<IProduct> iproductList;
     private String purchaseId;
     private String productName;
     private String extraName;

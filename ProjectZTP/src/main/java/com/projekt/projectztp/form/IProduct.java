@@ -5,22 +5,39 @@
  */
 package com.projekt.projectztp.form;
 
+import lombok.Getter;
+import lombok.Setter;
+
 /**
  *
  * @author Olaa
  */
-public interface IProduct {
+@Getter
+@Setter
+public abstract class IProduct {
     
-    Long id = null;
+    Long id;
     
-    String name = null;
+    String name;
     
-    float price = 0;
+    float price;
     
-    void add();
+    long quantity;
     
-    void delete();
+    public String about(){
+        return name;
+    }
     
-    void edit();
+    public float price(){
+        return price;
+    }
+    
+    public long quantity(){
+        return quantity;
+    }
+    
+    public Long getId(){
+        return id;
+    }
     
 }

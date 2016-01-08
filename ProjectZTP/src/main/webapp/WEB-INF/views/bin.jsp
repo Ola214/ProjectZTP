@@ -331,6 +331,24 @@
                             </tr>
                         </c:forEach>
                     </table><br>
+                    <h1>Kosz w tej sesji</h1>
+                    <table border='1'>
+                        <tr>
+                            <th>Id</th>
+                            <th>Nazwa</th>
+                            <th>Cena</th>
+                            <th>Ilość</th>
+                        </tr>
+                        <c:forEach var="iproduct" items="${sessionScope.iproductList}">
+                            <tr> 
+                                
+                                <td>${iproduct.id}</td>
+                                <td>${iproduct.name}</td>
+                                <td>${iproduct.price}</td>
+                                <td>${iproduct.quantity}</td>
+                            </tr>
+                        </c:forEach>
+                    </table><br>
 
                     <h1>Usuń zamówienie</h1>
                     <form:form action="/ProjectZTP/deletePurchaseBin" method="POST" modelAttribute="binForm">
